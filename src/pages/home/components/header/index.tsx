@@ -42,7 +42,7 @@ export const Header = () => {
           <div className="max-w-sm text-center lg:text-left">
             <div className="flex w-full justify-center">
               <img
-                src={'/assets/images/me.webp'}
+                src={`${profile.github}.png`}
                 width={140}
                 height={140}
                 alt={''}

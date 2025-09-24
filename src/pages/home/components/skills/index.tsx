@@ -90,7 +90,7 @@ export const Skills = () => {
     // bg-gradient-to-tl from-gray-950 via-indigo-950 to-gray-950
     <section id="skills" className="min-h-screen py-20">
       <div className="container mx-auto max-w-5xl px-6">
-        <SectionTitle title="Cases e Projetos" />
+        <SectionTitle title="Stack de Tecnologias" />
 
         <Animation y={50} once={true}>
           <Card>

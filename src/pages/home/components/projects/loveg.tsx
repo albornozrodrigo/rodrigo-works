@@ -23,14 +23,6 @@ export const Loveg = () => {
         <span className="badge badge-secondary">MySQL</span>
         <span className="badge badge-accent">WebSockets</span>
       </div>
-      {/* <div className="card-actions justify-between items-center mt-4">
-          <div className="text-xs">
-            <small>
-              Mencionado em Folha de S.Paulo, Catraca Livre e Revista Super
-              Interessante
-            </small>
-          </div>
-        </div> */}
     </Card>
   );
 };
