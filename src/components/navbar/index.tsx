@@ -2,7 +2,7 @@ import { MoonIcon, SunIcon } from 'lucide-react';
 
 export const Navbar = () => {
   return (
-    <div className="navbar bg-transparent text-white shadow-sm absolute top-0 left-0">
+    <div className="navbar absolute top-0 left-0 z-50 bg-transparent text-white shadow-sm">
       <div className="flex-1">
         <a href="/" className="ml-2 text-xl">{`<rodrigo.works>`}</a>
       </div>

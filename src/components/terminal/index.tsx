@@ -49,12 +49,12 @@ export const Terminal = ({ profile }: TerminalInterface) => {
             <span className="text-white">skills:</span>
             <span className="text-gray-400">{`['`}</span>
             {profile.skills.map((skill, i) => (
-              <>
+              <span key={skill}>
                 <span className="text-cyan-400">{skill}</span>
                 {i !== profile.skills.length - 1 && (
                   <span className="text-gray-400">{"', '"}</span>
                 )}
-              </>
+              </span>
             ))}
             <span className="text-gray-400">{"'],"}</span>
           </div>

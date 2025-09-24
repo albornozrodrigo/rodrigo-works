@@ -1,54 +1,34 @@
-import { motion } from 'framer-motion';
+import { Animation } from '../../../../components/animation';
 import { SectionTitle } from '../../../../components/section-title';
 import { AppBroker } from './app-broker';
 import { FreightLogin } from './freight-login';
 import { Loveg } from './loveg';
 import { Store } from './store';
 
-export default function Projects() {
+export const Projects = () => {
   return (
     <section id="projects" className="py-20">
       <div className="container mx-auto max-w-5xl px-6">
         <SectionTitle title="Cases e Projetos" />
 
         <div className="grid gap-8 lg:grid-cols-2">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, amount: 0.25 }}
-            transition={{ duration: 0.5 }}
-          >
+          <Animation x={-50} once={true}>
             <Store />
-          </motion.div>
+          </Animation>
 
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, amount: 0.25 }}
-            transition={{ duration: 0.5 }}
-          >
+          <Animation x={50} once={true}>
             <FreightLogin />
-          </motion.div>
+          </Animation>
 
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, amount: 0.25 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
+          <Animation x={-50} once={true}>
             <AppBroker />
-          </motion.div>
+          </Animation>
 
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, amount: 0.25 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
+          <Animation x={50} once={true}>
             <Loveg />
-          </motion.div>
+          </Animation>
         </div>
       </div>
     </section>
   );
-}
+};

@@ -1,19 +1,13 @@
-import { motion } from 'framer-motion';
+import { Animation } from '../../../../components/animation';
 import { SectionTitle } from '../../../../components/section-title';
 
-export default function About() {
+export const About = () => {
   return (
     <section id="about" className="min-h-screen py-20">
       <div className="container mx-auto px-6">
         <SectionTitle title="Sobre Mim" />
 
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.25 }}
-          transition={{ duration: 0.6 }}
-          className="mx-auto max-w-xl"
-        >
+        <Animation className="mx-auto max-w-xl" x={0} y={50} once={true}>
           <div className="space-y-6">
             <h3 className="mb-6 text-2xl font-bold">Resumo profissional</h3>
             <p className="text-lg leading-relaxed">
@@ -49,8 +43,8 @@ export default function About() {
               </div>
             </div>
           </div>
-        </motion.div>
+        </Animation>
       </div>
     </section>
   );
-}
+};
