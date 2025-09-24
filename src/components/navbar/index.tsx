@@ -6,7 +6,7 @@ export const Navbar = () => {
       <div className="flex-1">
         <a href="/" className="ml-2 text-xl">{`<rodrigo.works>`}</a>
       </div>
-      <div className="flex-none">
+      <div className="hidden flex-none">
         <ul className="menu menu-horizontal px-1">
           <li>
             <label className="swap swap-rotate rounded-full">

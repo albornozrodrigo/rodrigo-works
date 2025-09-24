@@ -1,6 +1,7 @@
+import { CheckCircle2Icon } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { Divider } from '../../components/divider';
-import { CASES } from '../../consts';
+import { Divider } from '../../../components/divider';
+import { CASES } from '../../../consts';
 
 export default function Store() {
   const HelpFromTeam = () => {
@@ -93,6 +94,17 @@ export default function Store() {
               <strong>Axios</strong> para integrações com outros serviços
               internos, como APIs de geolocalização, validação de CEP e consulta
               de regiões de atendimento.
+            </p>
+          </div>
+
+          <div role="alert" className="alert alert-info">
+            <p className="leading-relaxed">
+              <strong>Testes Automatizados:</strong> Implementação de testes
+              unitários e de integração utilizando o <strong>Jest</strong>,
+              assegurando alta cobertura de código, detecção precoce de bugs e
+              validação contínua das regras de negócio. O pipeline de CI executa
+              os testes a cada alteração, promovendo qualidade, confiabilidade e
+              evolução segura da solução.
             </p>
           </div>
 
@@ -197,53 +209,94 @@ export default function Store() {
 
           <p className="leading-relaxed">O fluxo de escrita do sistema:</p>
 
-          <div role="alert" className="alert alert-info">
-            <p className="leading-relaxed">
-              <strong>Requisição e Validação:</strong> O controller recebe a
-              requisição, e os <strong>DTOs (Data Transfer Objects)</strong> com{' '}
-              <code>class-validator</code> garantem a integridade estrutural dos
-              dados.
-            </p>
-          </div>
-
-          <div role="alert" className="alert alert-info">
-            <p className="leading-relaxed">
-              <strong>Sanitização:</strong> Parâmetros de URL são sanitizados
-              para prevenir ataques de XSS.
-            </p>
-          </div>
-
-          <div role="alert" className="alert alert-info">
-            <p className="leading-relaxed">
-              <strong>Regras de Negócio:</strong> O service layer orquestra
-              validações complexas, como:
-              <ul className="list-disc pl-6">
-                <li>
-                  Verificar a existência da loja principal antes de adicionar
-                  informações secundárias.
-                </li>
-                <li>
-                  Consultar APIs externas para enriquecer os dados (ex: buscar
-                  uma região de atendimento a partir de um CEP).
-                </li>
-              </ul>
-            </p>
-          </div>
-
-          <div role="alert" className="alert alert-info">
-            <p className="leading-relaxed">
-              <strong>Persistência:</strong> Os dados são salvos no MongoDB.
-            </p>
-          </div>
-
-          <div role="alert" className="alert alert-info">
-            <p className="leading-relaxed">
-              <strong>Eventos Assíncronos:</strong> Após a confirmação da
-              escrita no banco, eventos são disparados para o Kafka e para a
-              plataforma de analytics, notificando o restante do ecossistema
-              sobre a mudança.
-            </p>
-          </div>
+          <ul className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
+            <li>
+              <div className="timeline-middle">
+                <CheckCircle2Icon />
+              </div>
+              <div className="timeline-start mb-10 md:text-end">
+                <div role="alert" className="alert alert-info">
+                  <p className="leading-relaxed">
+                    <strong>Requisição e Validação:</strong> O controller recebe
+                    a requisição, e os{' '}
+                    <strong>DTOs (Data Transfer Objects)</strong> com{' '}
+                    <code>class-validator</code> garantem a integridade
+                    estrutural dos dados.
+                  </p>
+                </div>
+              </div>
+              <hr />
+            </li>
+            <li>
+              <hr />
+              <div className="timeline-middle">
+                <CheckCircle2Icon />
+              </div>
+              <div className="timeline-end md:mb-10">
+                <div role="alert" className="alert alert-info">
+                  <p className="leading-relaxed">
+                    <strong>Sanitização:</strong> Parâmetros de URL são
+                    sanitizados para prevenir ataques de XSS.
+                  </p>
+                </div>
+              </div>
+              <hr />
+            </li>
+            <li>
+              <hr />
+              <div className="timeline-middle">
+                <CheckCircle2Icon />
+              </div>
+              <div className="timeline-start mb-10 md:text-end">
+                <div role="alert" className="alert alert-info">
+                  <p className="leading-relaxed">
+                    <strong>Regras de Negócio:</strong> O service layer
+                    orquestra validações complexas, como:
+                    <ul className="list-disc pl-6">
+                      <li>
+                        Verificar a existência da loja principal antes de
+                        adicionar informações secundárias.
+                      </li>
+                      <li>
+                        Consultar APIs externas para enriquecer os dados (ex:
+                        buscar uma região de atendimento a partir de um CEP).
+                      </li>
+                    </ul>
+                  </p>
+                </div>
+              </div>
+              <hr />
+            </li>
+            <li>
+              <hr />
+              <div className="timeline-middle">
+                <CheckCircle2Icon />
+              </div>
+              <div className="timeline-end md:mb-10">
+                <div role="alert" className="alert alert-info">
+                  <p className="leading-relaxed">
+                    <strong>Persistência:</strong> Os dados são salvos no
+                    MongoDB.
+                  </p>
+                </div>
+              </div>
+              <hr />
+            </li>
+            <li>
+              <hr />
+              <div className="timeline-middle"></div>
+              <div className="timeline-start mb-10 md:text-end">
+                <div role="alert" className="alert alert-info">
+                  <p className="leading-relaxed">
+                    <strong>Eventos Assíncronos:</strong> Após a confirmação da
+                    escrita no banco, eventos são disparados para o Kafka e para
+                    a plataforma de analytics, notificando o restante do
+                    ecossistema sobre a mudança.
+                  </p>
+                </div>
+              </div>
+            </li>
+          </ul>
 
           <h3 className="mt-18 text-xl font-bold">
             Processamento Assíncrono de Arquivos em Massa
@@ -403,7 +456,7 @@ export default function Store() {
 
           <Divider margin />
 
-          <h2 className="mt-10 mb-4 text-2xl">Conclusão</h2>
+          <h2 className="mt-10 text-2xl font-bold">Conclusão</h2>
 
           <p className="leading-relaxed">
             A solução <strong>Store Portal</strong>, composta pela API em{' '}

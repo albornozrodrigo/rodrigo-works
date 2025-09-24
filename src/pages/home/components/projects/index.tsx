@@ -7,7 +7,7 @@ import { Store } from './store';
 
 export const Projects = () => {
   return (
-    <section id="projects" className="py-20">
+    <section id="projects" className="min-h-screen py-20">
       <div className="container mx-auto max-w-5xl px-6">
         <SectionTitle title="Cases e Projetos" />
 

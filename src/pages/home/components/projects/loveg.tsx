@@ -7,7 +7,10 @@ export const Loveg = () => {
   return (
     <Card>
       <h3 className="card-title flex justify-between">
-        <Link to={PROJECTS.LOVEG} className="flex items-center gap-2">
+        <Link
+          to={PROJECTS.LOVEG}
+          className="text-success flex items-center gap-2"
+        >
           <HeartIcon className="size-4" />
           Loveg - v1 / v2
         </Link>
