@@ -31,11 +31,11 @@ export const About = () => {
                 <div className="stat-value text-primary">15+</div>
                 <div className="stat-desc">Anos</div>
               </div>
-              <div className="stat">
+              {/* <div className="stat">
                 <div className="stat-title">Projetos</div>
                 <div className="stat-value text-secondary">50+</div>
                 <div className="stat-desc">Concluídos</div>
-              </div>
+              </div> */}
               <div className="stat">
                 <div className="stat-title">Tecnologias</div>
                 <div className="stat-value text-accent">20+</div>

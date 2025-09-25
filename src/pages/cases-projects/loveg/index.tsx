@@ -16,7 +16,7 @@ export default function Loveg() {
             Loveg, foi desenvolvido como uma plataforma de namoro online
             inovadora, focada exclusivamente em conectar pessoas vegetarianas e
             veganas. O projeto abrange uma API robusta, um frontend web e um
-            aplicativo móbile híbrido, visando criar uma comunidade engajada e
+            aplicativo mobile híbrido, visando criar uma comunidade engajada e
             oferecer um ambiente seguro e personalizado para usuários com
             estilos de vida e valores semelhantes.
           </p>

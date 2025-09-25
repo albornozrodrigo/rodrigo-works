@@ -2,9 +2,12 @@ import { MoonIcon, SunIcon } from 'lucide-react';
 
 export const Navbar = () => {
   return (
-    <div className="navbar absolute top-0 left-0 z-50 bg-transparent text-white shadow-sm">
+    <div className="navbar absolute top-0 left-0 z-50 bg-transparent text-white">
       <div className="flex-1">
-        <a href="/" className="ml-2 text-xl">{`<rodrigo.works>`}</a>
+        <a
+          href="/"
+          className="hover:text-secondary ml-2 text-sm transition-all duration-300"
+        >{`<rodrigo.works>`}</a>
       </div>
       <div className="hidden flex-none">
         <ul className="menu menu-horizontal px-1">

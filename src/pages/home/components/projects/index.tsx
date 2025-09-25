@@ -4,6 +4,7 @@ import { AppBroker } from './app-broker';
 import { FreightLogin } from './freight-login';
 import { Loveg } from './loveg';
 import { Store } from './store';
+import { SwipeCards } from './swipe-cards';
 
 export const Projects = () => {
   return (
@@ -26,6 +27,10 @@ export const Projects = () => {
 
           <Animation x={50} once={true}>
             <Loveg />
+          </Animation>
+
+          <Animation x={-50} once={true}>
+            <SwipeCards />
           </Animation>
         </div>
       </div>
