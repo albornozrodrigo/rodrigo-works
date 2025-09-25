@@ -1,7 +1,12 @@
 import express from 'express';
 import fs from 'fs';
-import path from 'path';
+import path, { dirname } from 'path';
+import { fileURLToPath } from 'url';
 import { createServer as createViteServer } from 'vite';
+
+// recria __dirname no ambiente ESM
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 async function createServer() {
   const app = express();
@@ -11,15 +16,20 @@ async function createServer() {
     server: { middlewareMode: true },
     appType: 'custom',
   });
-  app.use(vite.middlewares);
 
-  app.use('*', async (req, res, next) => {
+  app.use(vite.middlewares);
+  app.use('*all', async (req, res, next) => {
     const url = req.originalUrl;
 
     try {
       // 1. Read index.html
       let template = fs.readFileSync(
-        path.resolve(__dirname, 'index.html'),
+        path.resolve(
+          __dirname,
+          process.env.NODE_ENV === 'production'
+            ? 'dist/client/index.html'
+            : 'index.html',
+        ),
         'utf-8',
       );
 
@@ -29,7 +39,10 @@ async function createServer() {
 
       // 3. Load the server entry. ssrLoadModule is an exposed utility in Vite.
       //    It's responsible for loading modules in SSR mode.
-      const { render } = await vite.ssrLoadModule('/src/entry-server.jsx');
+      const { render } =
+        process.env.NODE_ENV === 'production'
+          ? import('./dist/server/entry-server.js')
+          : await vite.ssrLoadModule('/src/entry-server.tsx');
 
       // 4. Render the app HTML.
       const appHtml = await render(url);

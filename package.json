@@ -6,14 +6,16 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "dev": "vite",
-    "build": "pnpm build:client && pnpm build:server",
-    "build:client": "tsc -b && vite build --outDir ./dist/client",
+    "build": "tsc -b && vite build",
+    "build-all": "pnpm build:client && pnpm build:server",
+    "build:client": "tsc -b && vite build --outDir ./dist/client --ssrManifest",
     "build:server": "tsc -b && vite build --ssr ./src/entry-server.tsx --outDir ./dist/server",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.13",
+    "express": "^5.1.0",
     "framer-motion": "^12.23.19",
     "lucide-react": "^0.544.0",
     "path": "^0.12.7",
