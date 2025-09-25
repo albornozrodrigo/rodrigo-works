@@ -6,7 +6,9 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "pnpm build:client && pnpm build:server",
+    "build:client": "tsc -b && vite build --outDir ./dist/client",
+    "build:server": "tsc -b && vite build --ssr ./src/entry-server.tsx --outDir ./dist/server",
     "lint": "eslint .",
     "preview": "vite preview"
   },
