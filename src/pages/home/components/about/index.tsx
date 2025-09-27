@@ -1,3 +1,4 @@
+import WavingHand from '../../../../assets/images/waving-hand.gif';
 import { Animation } from '../../../../components/animation';
 import { SectionTitle } from '../../../../components/section-title';
 
@@ -12,13 +13,12 @@ export const About = () => {
             <h3 className="mb-6 text-2xl font-bold">Resumo profissional</h3>
             <p className="text-lg leading-relaxed">
               <img
-                src="/src/assets/images/waving-hand.gif"
+                src={WavingHand}
                 className="mr-2 mb-2.5 inline size-6.5"
                 alt="hello"
               />
               Olá! Sou o Rodrigo, Desenvolvedor Front-End / Full-Stack com mais
-              de
-              <strong>10 anos de experiência</strong> especializado no
+              de <strong>10 anos de experiência</strong> especializado no
               ecossistema <strong className="text-secondary">React</strong>,{' '}
               <strong className="text-secondary">Node.js</strong> e arquiteturas
               modernas. Expertise em desenvolvimento de aplicações de suporte

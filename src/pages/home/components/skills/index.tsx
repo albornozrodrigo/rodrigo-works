@@ -46,7 +46,7 @@ const skillsList = {
     // 'Vitest',
 
     'Zod',
-    'Micro Frontends',
+    'Module Federation (Micro Frontends)',
   ],
   backend: [
     'Laravel (PHP)',
