@@ -76,10 +76,11 @@ export const Header = () => {
             </div>
 
             <p className="my-4 text-center text-sm text-gray-300 lg:my-6 lg:text-base">
-              Desenvolvedor Front-End / Full Stack com 15 anos de experiência,
-              especializado em <strong className="text-secondary">React</strong>
-              , <strong className="text-secondary">NodeJS</strong> e
-              arquiteturas modernas.
+              Desenvolvedor Front-End / Full Stack com mais de dez anos de
+              experiência, especializado em{' '}
+              <strong className="text-secondary">React</strong>,{' '}
+              <strong className="text-secondary">NodeJS</strong> e arquiteturas
+              modernas.
             </p>
 
             <p className="text-center">

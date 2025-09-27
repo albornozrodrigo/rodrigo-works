@@ -11,9 +11,16 @@ export const About = () => {
           <div className="space-y-6">
             <h3 className="mb-6 text-2xl font-bold">Resumo profissional</h3>
             <p className="text-lg leading-relaxed">
-              Desenvolvedor Full-Stack com{' '}
-              <strong>15 anos de experiência</strong> especializado em{' '}
-              <strong>React</strong>, <strong>Node.js</strong> e arquiteturas
+              <img
+                src="/src/assets/images/waving-hand.gif"
+                className="mr-2 mb-2.5 inline size-6.5"
+                alt="hello"
+              />
+              Olá! Sou o Rodrigo, Desenvolvedor Front-End / Full-Stack com mais
+              de
+              <strong>10 anos de experiência</strong> especializado no
+              ecossistema <strong className="text-secondary">React</strong>,{' '}
+              <strong className="text-secondary">Node.js</strong> e arquiteturas
               modernas. Expertise em desenvolvimento de aplicações de suporte
               para e-commerce, com foco em performance, UX/UI e sistemas
               distribuídos.
@@ -28,7 +35,7 @@ export const About = () => {
             <div className="stats stats-vertical lg:stats-horizontal w-full text-center shadow">
               <div className="stat">
                 <div className="stat-title">Experiência</div>
-                <div className="stat-value text-primary">15+</div>
+                <div className="stat-value text-primary">10+</div>
                 <div className="stat-desc">Anos</div>
               </div>
               {/* <div className="stat">
