@@ -80,7 +80,7 @@ const skillsList = {
 
 export const Badge = ({ children }: PropsWithChildren) => {
   return (
-    <span className="badge badge-outline skill-tag opacity-50 transition-all hover:opacity-90">
+    <span className="badge badge-outline skill-tag hover:badge-secondary opacity-50 transition-all hover:opacity-90">
       {children}
     </span>
   );
