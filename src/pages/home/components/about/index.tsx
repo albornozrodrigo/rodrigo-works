@@ -3,7 +3,7 @@ import { SectionTitle } from '../../../../components/section-title';
 
 export const About = () => {
   return (
-    <section id="about" className="min-h-screen py-20">
+    <section id="about" className="flex min-h-screen items-center py-20">
       <div className="container mx-auto px-6">
         <SectionTitle title="Sobre Mim" />
 

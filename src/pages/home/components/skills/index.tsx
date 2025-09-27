@@ -24,6 +24,7 @@ const skillsList = {
 
     'SASS',
     'LESS',
+    'PostCSS',
     'Bootstrap',
     'TailwindCSS',
     'MaterialUI',
@@ -45,6 +46,7 @@ const skillsList = {
     // 'Vitest',
 
     'Zod',
+    'Micro Frontends',
   ],
   backend: [
     'Laravel (PHP)',
@@ -71,8 +73,7 @@ const skillsList = {
     'Performance',
     // 'Accessibility',
     // 'Web Vitals',
-    'Microservices',
-    // 'Microfrontends',
+    'Micro Serviço',
     'API Design',
   ],
 };
@@ -88,7 +89,7 @@ export const Badge = ({ children }: PropsWithChildren) => {
 export const Skills = () => {
   return (
     // bg-gradient-to-tl from-gray-950 via-indigo-950 to-gray-950
-    <section id="skills" className="min-h-screen py-20">
+    <section id="skills" className="flex min-h-screen items-center py-20">
       <div className="container mx-auto max-w-5xl px-6">
         <SectionTitle title="Stack de Tecnologias" />
 

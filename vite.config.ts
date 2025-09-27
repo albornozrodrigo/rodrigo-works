@@ -1,7 +1,7 @@
 import federation from '@originjs/vite-plugin-federation';
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
-import path from 'path';
+import { fileURLToPath } from 'url';
 import { defineConfig } from 'vite';
 
 // https://vitejs.dev/config/
@@ -13,9 +13,11 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@/': path.resolve(__dirname, './src'),
-      '@/components': path.resolve(__dirname, './src/components'),
-      '@/pages': path.resolve(__dirname, './src/pages'),
+      '@/': fileURLToPath(new URL('./src', import.meta.url)),
+      '@/components': fileURLToPath(
+        new URL('./src/components', import.meta.url),
+      ),
+      '@/pages': fileURLToPath(new URL('./src/pages', import.meta.url)),
     },
   },
   plugins: [

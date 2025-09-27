@@ -8,7 +8,7 @@ import { SwipeCards } from './swipe-cards';
 
 export const Projects = () => {
   return (
-    <section id="projects" className="min-h-screen py-20">
+    <section id="projects" className="flex min-h-screen items-center py-20">
       <div className="container mx-auto max-w-5xl px-6">
         <SectionTitle title="Cases e Projetos" />
 

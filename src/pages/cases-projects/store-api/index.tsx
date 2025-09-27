@@ -209,12 +209,12 @@ export default function Store() {
 
           <p className="leading-relaxed">O fluxo de escrita do sistema:</p>
 
-          <ul className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
+          <ul className="timeline timeline-vertical">
             <li>
               <div className="timeline-middle">
                 <CheckCircle2Icon />
               </div>
-              <div className="timeline-start mb-10 md:text-end">
+              <div className="timeline-end ml-4">
                 <div role="alert" className="alert alert-info">
                   <p className="leading-relaxed">
                     <strong>Requisição e Validação:</strong> O controller recebe
@@ -232,7 +232,7 @@ export default function Store() {
               <div className="timeline-middle">
                 <CheckCircle2Icon />
               </div>
-              <div className="timeline-end md:mb-10">
+              <div className="timeline-start mr-4">
                 <div role="alert" className="alert alert-info">
                   <p className="leading-relaxed">
                     <strong>Sanitização:</strong> Parâmetros de URL são
@@ -247,7 +247,7 @@ export default function Store() {
               <div className="timeline-middle">
                 <CheckCircle2Icon />
               </div>
-              <div className="timeline-start mb-10 md:text-end">
+              <div className="timeline-end ml-4">
                 <div role="alert" className="alert alert-info">
                   <p className="leading-relaxed">
                     <strong>Regras de Negócio:</strong> O service layer
@@ -272,7 +272,7 @@ export default function Store() {
               <div className="timeline-middle">
                 <CheckCircle2Icon />
               </div>
-              <div className="timeline-end md:mb-10">
+              <div className="timeline-start mr-4">
                 <div role="alert" className="alert alert-info">
                   <p className="leading-relaxed">
                     <strong>Persistência:</strong> Os dados são salvos no
@@ -284,8 +284,10 @@ export default function Store() {
             </li>
             <li>
               <hr />
-              <div className="timeline-middle"></div>
-              <div className="timeline-start mb-10 md:text-end">
+              <div className="timeline-middle">
+                <CheckCircle2Icon />
+              </div>
+              <div className="timeline-end ml-4">
                 <div role="alert" className="alert alert-info">
                   <p className="leading-relaxed">
                     <strong>Eventos Assíncronos:</strong> Após a confirmação da

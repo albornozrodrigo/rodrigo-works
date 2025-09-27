@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 export interface Profile {
   name: string | ReactNode;
-  description: string | ReactNode;
+  email: string;
   company: string | null;
   location: string;
   github: string;

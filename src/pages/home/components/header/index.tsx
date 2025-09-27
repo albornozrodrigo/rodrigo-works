@@ -1,25 +1,26 @@
-import { ChevronDownIcon } from 'lucide-react';
+import {
+  ChevronDownIcon,
+  DownloadIcon,
+  GithubIcon,
+  LinkedinIcon,
+  MailIcon,
+} from 'lucide-react';
 import { Terminal } from '../../../../components/terminal';
 import useTypewriter from '../../../../hooks/typewriter';
 import { Profile } from '../../../../interfaces/interfaces';
 
 export const Header = () => {
   const name = useTypewriter({ text: 'Rodrigo Albornoz' });
-  const description = useTypewriter({
-    text: '15 anos de experiência em desenvolvimento Full-Stack, especializado em React, Node.js e arquiteturas modernas.',
-    speed: 25,
-  });
 
   const profile: Profile = {
     name,
-    description,
+    email: 'rodrigo.albornoz.f@gmail.com',
     hireable: true,
     company: null,
     location: 'São Paulo',
     github: 'https://github.com/albornozrodrigo',
     linkedIn: 'https://www.linkedin.com/in/albornozrodrigo/',
-    resume:
-      'https://drive.google.com/file/d/1eyutpKFFhJ9X-qpQGKhUNnVRkB5Wer00/view?usp=sharing',
+    resume: '',
     skills: [
       'TypeScript',
       'React',
@@ -45,13 +46,51 @@ export const Header = () => {
                 src={`${profile.github}.png`}
                 width={140}
                 height={140}
-                alt={''}
-                className="mx-auto cursor-pointer rounded-full grayscale transition-all duration-1000 hover:scale-110 hover:grayscale-0"
+                alt={'Desenvolvedor Front-End | Full Stack -  Rodrigo Albornoz'}
+                className="mx-auto cursor-pointer rounded-full shadow-lg grayscale transition-all duration-1000 hover:scale-110 hover:grayscale-0"
               />
             </div>
 
+            <div className="mt-6 mb-2 flex justify-center gap-6 text-2xl">
+              <a
+                href={profile.github}
+                target="_blank"
+                className="hover:text-secondary transition-colors"
+              >
+                <GithubIcon />
+              </a>
+              <a
+                href={profile.linkedIn}
+                target="_blank"
+                className="hover:text-secondary transition-colors"
+              >
+                <LinkedinIcon />
+              </a>
+              <a
+                href={`mailto:${profile.email}`}
+                target="_blank"
+                className="hover:text-secondary transition-colors"
+              >
+                <MailIcon />
+              </a>
+            </div>
+
             <p className="my-4 text-center text-sm text-gray-300 lg:my-6 lg:text-base">
-              {description}
+              Desenvolvedor Front-End / Full Stack com 15 anos de experiência,
+              especializado em <strong className="text-secondary">React</strong>
+              , <strong className="text-secondary">NodeJS</strong> e
+              arquiteturas modernas.
+            </p>
+
+            <p className="text-center">
+              <a
+                href="/rodrigo-albornoz.pdf"
+                download="rodrigo-albornoz.pdf"
+                target="_blank"
+                className="btn btn-outline hover:btn-secondary btn-sm"
+              >
+                <DownloadIcon className="mr-1 size-3" /> Currículo
+              </a>
             </p>
           </div>
 
