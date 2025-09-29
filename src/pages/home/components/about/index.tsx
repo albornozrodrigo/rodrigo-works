@@ -18,17 +18,17 @@ export const About = () => {
                 alt="hello"
               />
               Olá! Sou o Rodrigo, Desenvolvedor Front-End / Full-Stack com mais
-              de <strong>10 anos de experiência</strong> especializado no
+              de <strong>10 anos de experiência</strong>, especializado no
               ecossistema <strong className="text-secondary">React</strong>,{' '}
               <strong className="text-secondary">Node.js</strong> e arquiteturas
               modernas. Expertise em desenvolvimento de aplicações de suporte
-              para e-commerce, com foco em performance, UX/UI e sistemas
-              distribuídos.
+              para e-commerce, PWAs com foco em performance, UX/UI e sistemas
+              distribuídos / microserviços.
             </p>
 
             <p className="text-lg leading-relaxed">
               Experiência desde startups até grandes corporações, com
-              proficiência em refatoração de sistemas monolíticos e criação de
+              proficiência em refatoração de sistemas legados e criação de
               sistemas do zero.
             </p>
 

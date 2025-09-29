@@ -27,7 +27,7 @@ export default function FreightLogin() {
           <h2 className="text-2xl font-bold">Arquitetura e Tecnologias</h2>
 
           <p className="leading-relaxed">
-            O projeto foi desenvolvido com <strong>NestJS</strong>, um framework
+            A API foi desenvolvida com <strong>NestJS</strong>, um framework
             Node.js que utiliza <strong>TypeScript</strong> e promove uma
             arquitetura modular e escalável. A estrutura do projeto segue os
             princípios de SOLID e Clean Architecture, com separação de
@@ -100,7 +100,7 @@ export default function FreightLogin() {
           <div role="alert" className="alert alert-info">
             <p className="leading-relaxed">
               <strong>CI/CD:</strong> Pipeline de integração e entrega contínua
-              com GitLab CI e conteinerização com Docker.
+              com GitLab e conteinerização com Docker.
             </p>
           </div>
 
@@ -123,8 +123,9 @@ export default function FreightLogin() {
           </div>
           <div role="alert" className="alert alert-info">
             <p className="leading-relaxed">
-              <strong>Design System:</strong> Framework de componentes como
-              Material-UI, para uma interface moderna e responsiva.
+              <strong>Design System:</strong> Material-UI, framework de
+              componentes reutilizáveis, para uma interface moderna e
+              responsiva.
             </p>
           </div>
           <div role="alert" className="alert alert-info">
@@ -152,7 +153,7 @@ export default function FreightLogin() {
               <ul className="list-disc pl-6">
                 <li>
                   <strong>Gerenciamento de Usuários:</strong> Uma interface para
-                  listar, criar, editar e excluir usuários.
+                  listar, adicionar, editar e excluir usuários.
                 </li>
                 <li>
                   <strong>Gerenciamento de Aplicações:</strong> Uma interface
@@ -160,7 +161,7 @@ export default function FreightLogin() {
                   autenticação.
                 </li>
                 <li>
-                  <strong>Controle de Acesso:</strong> O frontend implementaria
+                  <strong>Controle de Acesso:</strong> O frontend implementa
                   rotas protegidas que só podem ser acessadas por usuários
                   autenticados, utilizando o JWT para autorização.
                 </li>
@@ -185,13 +186,7 @@ export default function FreightLogin() {
           <ul className="list-disc space-y-2 pl-6">
             <li>
               <strong>
-                <code>AppModule</code>:
-              </strong>{' '}
-              O módulo raiz que une todos os outros módulos.
-            </li>
-            <li>
-              <strong>
-                <code>AuthModule</code>:
+                <code>Auth</code>:
               </strong>{' '}
               Responsável por toda a lógica de autenticação, incluindo a geração
               de tokens JWT e a implementação das diferentes estratégias de
@@ -199,40 +194,41 @@ export default function FreightLogin() {
             </li>
             <li>
               <strong>
-                <code>UserModule</code>:
+                <code>User</code>:
               </strong>{' '}
               Gerencia todas as operações relacionadas a usuários (CRUD).
             </li>
             <li>
               <strong>
-                <code>ApplicationModule</code>:
+                <code>Application</code>:
               </strong>{' '}
-              Gerencia as aplicações que podem se autenticar na API.
+              Gerencia as aplicações que podem se autenticar na API e as
+              aplicações que os usuários podem ter permissão de acesso.
             </li>
           </ul>
           <p className="leading-relaxed">Cada módulo é estruturado com:</p>
           <ul className="list-disc space-y-2 pl-6">
             <li>
               <strong>
-                <code>*.controller.ts</code>:
+                <code>Controllers</code>:
               </strong>{' '}
               Define os endpoints da API e lida com as requisições HTTP.
             </li>
             <li>
               <strong>
-                <code>*.service.ts</code>:
+                <code>Services</code>:
               </strong>{' '}
               Contém a lógica de negócios.
             </li>
             <li>
               <strong>
-                <code>*.repository.ts</code>:
+                <code>Repositories</code>:
               </strong>{' '}
               Abstrai a comunicação com o banco de dados.
             </li>
             <li>
               <strong>
-                <code>*.schema.ts</code>:
+                <code>Schemas</code>:
               </strong>{' '}
               Define o schema do banco de dados para o Mongoose.
             </li>
@@ -243,7 +239,7 @@ export default function FreightLogin() {
           <h2 className="mt-10 text-2xl font-bold">Conclusão</h2>
 
           <p className="leading-relaxed">
-            A <strong>Freight Login API</strong> é uma solução completa para
+            <strong>Freight Login</strong> é uma solução completa para
             gerenciamento de identidade e acesso, construída com tecnologias
             modernas e seguindo as melhores práticas de desenvolvimento de
             software. A arquitetura modular e flexível a torna uma base sólida

@@ -13,12 +13,12 @@ export default function Loveg() {
             Loveg - Plataforma de Relacionamento para Vegetarianos e Veganos
           </h2>
           <p className="leading-relaxed">
-            Loveg, foi desenvolvido como uma plataforma de namoro online
-            inovadora, focada exclusivamente em conectar pessoas vegetarianas e
-            veganas. O projeto abrange uma API robusta, um frontend web e um
-            aplicativo mobile híbrido, visando criar uma comunidade engajada e
-            oferecer um ambiente seguro e personalizado para usuários com
-            estilos de vida e valores semelhantes.
+            Loveg, foi desenvolvido como uma plataforma de relacionamento
+            online, focada exclusivamente em conectar pessoas vegetarianas e
+            veganas. O projeto abrange uma API RESTful, um frontend web e um
+            aplicativo mobile híbrido, visando oferecer um ambiente seguro e
+            personalizado para usuários com estilos de vida e valores
+            semelhantes.
           </p>
 
           <Divider margin />
@@ -31,8 +31,8 @@ export default function Loveg() {
             compatibilidade de estilo de vida é um pilar fundamental para o
             relacionamento. A plataforma foi desenvolvida para ser robusta,
             escalável e segura, suportando todas as funcionalidades essenciais
-            de um aplicativo de namoro moderno, com um foco especial na
-            experiência do usuário e na performance em múltiplas plataformas.
+            de um dating app moderno, com um foco especial na experiência do
+            usuário e na performance em múltiplas plataformas.
           </p>
 
           <Divider margin />
@@ -42,10 +42,10 @@ export default function Loveg() {
           <p className="leading-relaxed">
             O projeto adota uma arquitetura de microsserviços, dividindo as
             responsabilidades em componentes independentes para maior
-            escalabilidade, manutenibilidade e resiliência. A plataforma é
-            composta por três pilares principais: um Backend (API Principal), um
-            Frontend Web e um Frontend Mobile (aplicativo híbrido), além de um
-            serviço de Chat em Tempo Real dedicado.
+            escalabilidade, manutenção e resiliência. A plataforma é composta
+            por três pilares principais: um Backend (API Principal), um Frontend
+            Web e um Frontend Mobile (aplicativo híbrido), além de um serviço de
+            Chat em Tempo Real dedicado.
           </p>
 
           <h3 className="mt-18 text-xl font-bold">
@@ -55,10 +55,9 @@ export default function Loveg() {
           <p className="leading-relaxed">
             Desenvolvido com o framework <strong>Laravel 5.x</strong>, o backend
             segue um padrão de arquitetura em camadas (Layered Architecture) e
-            utiliza o padrão Repository para desacoplar a lógica de negócios da
-            camada de persistência de dados. É o coração da plataforma,
-            fornecendo todos os dados e lógica de negócios para os clientes web
-            e mobile.
+            utiliza repositories para desacoplar a lógica de negócios da camada
+            de persistência de dados. É o core da plataforma, fornecendo todos
+            os dados e lógica de negócios para os clientes web e mobile.
           </p>
 
           <ul className="list-disc space-y-2 pl-6">
@@ -73,31 +72,50 @@ export default function Loveg() {
             </li>
             <li>
               <strong>Repositories:</strong> Abstraem a interação com o banco de
-              dados (MySQL), facilitando a troca de ORM ou de banco de dados no
-              futuro caso necessário.
+              dados (MySQL), facilitando a troca de ORM ou de banco de dados,
+              caso isso fosse necessário no futuro.
             </li>
             <li>
               <strong>Entities:</strong> Representam os modelos de dados do
               sistema, mapeando as tabelas do banco de dados.
             </li>
             <li>
-              <strong>Transformers (League/Fractal):</strong> Essenciais para a
-              construção de uma API RESTful consistente, transformam os dados
-              dos modelos em uma estrutura otimizada para o consumo do frontend,
-              garantindo flexibilidade e controle sobre a saída de dados.
+              <strong>Transformers:</strong> Essenciais para a construção de uma
+              API RESTful consistente, transformam os dados dos modelos em uma
+              estrutura otimizada para o consumo do frontend, garantindo
+              flexibilidade e controle sobre a saída de dados.
             </li>
           </ul>
 
           <h3 className="mt-18 text-xl font-bold">2. Frontend Web</h3>
 
           <p className="leading-relaxed">
-            O frontend web é construído com <strong>AngularJS 1.x</strong>, uma
-            escolha robusta para Single Page Applications (SPAs) da época. Ele
-            interage exclusivamente com a API do Laravel para todas as operações
-            de dados. O processo de build e otimização de assets (CSS,
-            JavaScript, imagens) é gerenciado pelo <strong>Gulp</strong>,
-            garantindo um carregamento rápido e eficiente da aplicação.
+            O frontend web foi construído utilizando{' '}
+            <strong>AngularJS 1.x</strong>, uma escolha robusta para Single Page
+            Applications (SPAs) da época. Ele interage exclusivamente com a API
+            do Laravel para todas as operações de dados. O processo de build e
+            otimização de assets (CSS, JavaScript, imagens) é gerenciado pelo{' '}
+            <strong>Gulp</strong>, garantindo um carregamento rápido e eficiente
+            da aplicação.
           </p>
+
+          <ul className="list-disc space-y-2 pl-6">
+            <li>
+              <strong>AngularJS (Angular 1):</strong> Gerencia toda a lógica do
+              lado do cliente, incluindo controllers, services, factories e
+              directives.
+            </li>
+            <li>
+              <strong>Bootstrap:</strong> Framework CSS utilizado para
+              estilização e layouts responsivos, permitindo a criação de
+              interfaces modernas e de fácil customização.
+            </li>
+            <li>
+              <strong>Sass:</strong> Utilizado para estilização, permitindo uma
+              organização robusta do CSS e customização de componentes do
+              Bootstrap.
+            </li>
+          </ul>
 
           <h3 className="mt-18 text-xl font-bold">
             3. Frontend Mobile (Aplicativo Híbrido)
@@ -106,7 +124,7 @@ export default function Loveg() {
           <p className="leading-relaxed">
             O aplicativo móvel é um <strong>aplicativo híbrido</strong>
             desenvolvido com <strong>Ionic v1.x</strong> e{' '}
-            <strong>AngularJS (Angular 1.x)</strong>, empacotado via{' '}
+            <strong>AngularJS (Angular 1.x)</strong>, empacotado com{' '}
             <strong>Apache Cordova</strong>. Esta abordagem permitiu o
             desenvolvimento multiplataforma (Android e iOS) a partir de uma
             única base de código web, acessando funcionalidades nativas do
@@ -119,18 +137,9 @@ export default function Loveg() {
               otimizados para dispositivos móveis.
             </li>
             <li>
-              <strong>AngularJS (Angular 1):</strong> Gerencia toda a lógica do
-              lado do cliente, incluindo controllers, services, factories e
-              directives.
-            </li>
-            <li>
               <strong>Apache Cordova:</strong> Empacota a aplicação web em um
               invólucro nativo, permitindo a distribuição em lojas de
               aplicativos e o acesso a APIs nativas do dispositivo.
-            </li>
-            <li>
-              <strong>Sass:</strong> Utilizado para estilização, permitindo uma
-              organização robusta do CSS.
             </li>
           </ul>
 
@@ -167,27 +176,22 @@ export default function Loveg() {
               <strong>Cache/Mensageria:</strong> Redis
             </li>
             <li>
-              <strong>Autenticação:</strong> OAuth2 (
-              <code>oauth2-server-laravel</code>)
+              <strong>Autenticação:</strong> OAuth2
             </li>
             <li>
-              <strong>API Transformation:</strong> League/Fractal
+              <strong>Filas:</strong> Beanstalkd
             </li>
             <li>
-              <strong>Filas:</strong> Pheanstalk (IronMQ)
-            </li>
-            <li>
-              <strong>Notificações Push:</strong>{' '}
-              <code>laravel-push-notification</code>
+              <strong>Notificações Push:</strong> Firebase Cloud Messaging
             </li>
             <li>
               <strong>Armazenamento de Arquivos:</strong> AWS S3
             </li>
             <li>
-              <strong>Processamento de Imagens:</strong> Intervention/Image
+              <strong>WebSockets:</strong> Socket.io (server)
             </li>
             <li>
-              <strong>WebSockets:</strong> Socket.io (server)
+              <strong>Cache:</strong> Redis
             </li>
           </ul>
 
@@ -198,10 +202,13 @@ export default function Loveg() {
               <strong>Framework JavaScript:</strong> AngularJS 1.x
             </li>
             <li>
+              <strong>Estilização:</strong> Bootstrap + SASS para customização
+            </li>
+            <li>
               <strong>Comunicação em Tempo Real:</strong> Socket.io (client)
             </li>
             <li>
-              <strong>Gerenciamento de Pacotes:</strong> Bower
+              <strong>Gerenciamento de Pacotes:</strong> Npm
             </li>
             <li>
               <strong>Automação de Tarefas:</strong> Gulp
@@ -214,7 +221,7 @@ export default function Loveg() {
 
           <ul className="list-disc space-y-2 pl-6">
             <li>
-              <strong>Framework Híbrido:</strong> Ionic v1
+              <strong>Framework Híbrido:</strong> Ionic 1.x
             </li>
             <li>
               <strong>Framework JavaScript:</strong> AngularJS 1.x
@@ -223,13 +230,13 @@ export default function Loveg() {
               <strong>Empacotamento Nativo:</strong> Apache Cordova
             </li>
             <li>
-              <strong>Estilização:</strong> Sass
+              <strong>Estilização:</strong> Ionic UI + SASS
             </li>
             <li>
               <strong>Comunicação em Tempo Real:</strong> Socket.io (client)
             </li>
             <li>
-              <strong>Gerenciamento de Pacotes:</strong> Bower
+              <strong>Gerenciamento de Pacotes:</strong> Npm
             </li>
             <li>
               <strong>Automação de Tarefas:</strong> Gulp
@@ -240,10 +247,10 @@ export default function Loveg() {
 
           <ul className="list-disc space-y-2 pl-6">
             <li>
-              <strong>Linguagem/Runtime:</strong> Node.js
+              <strong>Plataforma:</strong> Node.js
             </li>
             <li>
-              <strong>Framework Web:</strong> Express
+              <strong>Framework:</strong> Express
             </li>
             <li>
               <strong>WebSockets:</strong> Socket.io (server)
@@ -266,9 +273,8 @@ export default function Loveg() {
             </li>
             <li>
               <strong>Gestão de Perfil de Usuário:</strong> Criação e edição
-              detalhada de perfis, incluindo informações pessoais, preferências,
-              fotos (com upload e otimização via AWS S3), acessível em ambas as
-              plataformas.
+              detalhada de perfis, preferências, fotos (com upload e otimização
+              via AWS S3), acessível em ambas as plataformas.
             </li>
             <li>
               <strong>Mecanismo de Busca Avançada:</strong> Filtros complexos
@@ -293,8 +299,8 @@ export default function Loveg() {
             </li>
             <li>
               <strong>Administração e Moderação:</strong> Ferramentas para
-              administradores gerenciarem usuários, denúncias e conteúdo,
-              garantindo um ambiente seguro.
+              administração do sistema, com moderação de usuários, denúncias e
+              conteúdo, garantindo um ambiente seguro.
             </li>
             <li>
               <strong>Exportação de Dados:</strong> Funcionalidade para exportar
@@ -319,9 +325,8 @@ export default function Loveg() {
             <li>
               <strong>Performance Otimizada:</strong> Otimização de queries de
               banco de dados, uso de cache com Redis, processamento assíncrono
-              de tarefas via filas (IronMQ) e otimização de imagens contribuíram
-              para uma experiência de usuário rápida e responsiva em todas as
-              interfaces.
+              de tarefas via filas e otimização de imagens contribuíram para uma
+              experiência de usuário rápida e responsiva em todas as interfaces.
             </li>
             <li>
               <strong>Segurança Abrangente:</strong> Implementação de OAuth2
@@ -337,17 +342,17 @@ export default function Loveg() {
               que funcionam perfeitamente entre a web e o aplicativo híbrido.
             </li>
             <li>
-              <strong>API Design Consistente:</strong> A utilização de
-              League/Fractal para transformar as respostas da API garantiu um
-              design de API limpo, consistente e fácil de consumir por ambos os
-              frontends (web e mobile).
+              <strong>API Design Consistente:</strong> A utilização de uma
+              arquitetura de microsserviços e o uso de padrões de projeto
+              garantiu um design de API limpo, consistente e fácil de consumir
+              por ambos os frontends (web e mobile).
             </li>
             <li>
-              <strong>Manutenibilidade e Reusabilidade:</strong> A adoção de
-              padrões de projeto (Repository, Services) e a modularização do
-              código, juntamente com a estratégia de aplicativo híbrido para o
-              mobile, contribuíram para um codebase mais organizado, fácil de
-              manter, estender e reutilizar componentes entre as plataformas.
+              <strong>Manutenção e Reusabilidade:</strong> A adoção de padrões
+              de projeto (Repository, Services) e a modularização do código,
+              juntamente com a estratégia de aplicativo híbrido para o mobile,
+              contribuíram para um código mais organizado, fácil de manter,
+              estender e reutilizar componentes entre as plataformas.
             </li>
             <li>
               <strong>Desenvolvimento Híbrido Eficiente:</strong> A escolha do

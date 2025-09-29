@@ -27,16 +27,15 @@ export default function Store() {
 
           <p className="leading-relaxed">
             A <strong>Store Portal API</strong> é uma API RESTful desenvolvida
-            como o pilar central para o gerenciamento de um complexo ecossistema
-            de lojas de um grande e-commerce. Construída com{' '}
-            <strong>NestJS</strong> e <strong>TypeScript</strong>, a solução foi
-            projetada para ser altamente escalável, modular e resiliente,
-            servindo como a fonte da verdade para todos os dados cadastrais e
-            operacionais de milhares de lojas.
+            como o pilar central para o gerenciamento de dados de marketplace de
+            um grande e-commerce. Construída com <strong>NestJS</strong> e{' '}
+            <strong>TypeScript</strong>, a solução foi projetada para ser
+            escalável, modular e resiliente, servindo como a fonte da verdade
+            para todos os dados cadastrais e operacionais de milhares de lojas.
           </p>
 
           <p className="leading-relaxed">
-            O sistema gerencia uma vasta gama de tipos de vendedores de
+            O sistema gerencia uma variedade de tipos de vendedores de um
             marketplace (sellers), lojas físicas com operações
             <strong>Online-to-Offline (O2O)</strong>, lockers para retirada de
             produtos, centros de distribuição e pontos de cross-docking.
@@ -50,7 +49,7 @@ export default function Store() {
             O principal desafio foi criar uma plataforma unificada que pudesse
             lidar com uma grande quantidade de dados e regras de negócio de cada
             tipo de loja, garantindo consistência, performance e integração com
-            dezenas de outros microsserviços.
+            diversos outros microsserviços.
           </p>
 
           <h3 className="mt-18 text-xl font-bold">Arquitetura e Tecnologias</h3>
@@ -58,39 +57,38 @@ export default function Store() {
           <p className="leading-relaxed">
             A arquitetura foi baseada em um design modular e orientado a
             domínios, utilizando tecnologias modernas para garantir
-            escalabilidade e manutenibilidade.
+            escalabilidade e fácil manutenção.
           </p>
 
           <div role="alert" className="alert alert-info">
             <p className="leading-relaxed">
-              <strong>Framework:</strong> <strong>NestJS</strong>, escolhido por
-              sua arquitetura modular, injeção de dependência e suporte nativo a
-              TypeScript, o que permitiu um desenvolvimento estruturado e
-              fortemente tipado.
+              <strong>Framework:</strong> <strong>NestJS</strong>, escolhido
+              pela sua arquitetura modular, injeção de dependência e suporte
+              nativo a TypeScript, o que permitiu um desenvolvimento estruturado
+              e fortemente tipado.
             </p>
           </div>
 
           <div role="alert" className="alert alert-info">
             <p className="leading-relaxed">
               <strong>Linguagem:</strong> <strong>TypeScript</strong>, para
-              garantir a segurança de tipos e facilitar a manutenção de uma
-              codebase complexa.
+              garantir a segurança de tipos e facilitar a manutenção do projeto.
             </p>
           </div>
 
           <div role="alert" className="alert alert-info">
             <p className="leading-relaxed">
               <strong>Banco de Dados:</strong> <strong>MongoDB</strong> com{' '}
-              <strong>Mongoose</strong>, selecionado pela flexibilidade de seu
-              schema, ideal para acomodar os diferentes atributos de cada tipo
-              de loja (ex: dados de O2O, informações de frete, regras de
-              comissionamento).
+              <strong>Mongoose</strong>, selecionado pela flexibilidade dos
+              schemas, ideal para acomodar diferentes atributos de cada tipo de
+              loja (ex: dados de O2O, informações de frete, regras de
+              comissionamento, etc.).
             </p>
           </div>
 
           <div role="alert" className="alert alert-info">
             <p className="leading-relaxed">
-              <strong>Comunicação síncrona em RESTful API</strong> com{' '}
+              <strong>Comunicação síncrona na RESTful API</strong> com{' '}
               <strong>Axios</strong> para integrações com outros serviços
               internos, como APIs de geolocalização, validação de CEP e consulta
               de regiões de atendimento.
@@ -103,8 +101,8 @@ export default function Store() {
               unitários e de integração utilizando o <strong>Jest</strong>,
               assegurando alta cobertura de código, detecção precoce de bugs e
               validação contínua das regras de negócio. O pipeline de CI executa
-              os testes a cada alteração, promovendo qualidade, confiabilidade e
-              evolução segura da solução.
+              os testes a cada tentativa de deploy, promovendo qualidade,
+              confiabilidade e evolução segura da solução.
             </p>
           </div>
 
@@ -113,10 +111,10 @@ export default function Store() {
               <p className="leading-relaxed">
                 <strong>Comunicação Assíncrona com Apache Kafka:</strong>{' '}
                 Utilizado como um barramento de eventos de domínio. Qualquer
-                alteração crítica nos dados de uma loja (criação, atualização)
-                dispara um evento, permitindo que outros microsserviços
-                (sistemas de frete, logística, analytics) reajam de forma
-                assíncrona e desacoplada.
+                alteração nos dados de uma loja (criação, atualização) dispara
+                um evento, permitindo que outros microsserviços (sistemas de
+                frete, logística, analytics) reajam de forma assíncrona e
+                desacoplada.
               </p>
               <HelpFromTeam />
             </div>
@@ -140,9 +138,8 @@ export default function Store() {
               <p className="leading-relaxed">
                 <strong>Monitoramento:</strong> Integração completa com{' '}
                 <strong>DataDog</strong> para APM (Application Performance
-                Monitoring), tracing distribuído e logging estruturado,
-                fornecendo visibilidade total sobre a saúde e a performance da
-                aplicação.
+                Monitoring), tracing distribuído e logging, fornecendo
+                visibilidade total sobre a saúde e a performance da aplicação.
               </p>
               <HelpFromTeam />
             </div>
@@ -159,8 +156,16 @@ export default function Store() {
 
           <div role="alert" className="alert alert-info">
             <p className="leading-relaxed">
-              <strong>Store:</strong> O núcleo, responsável pelos dados
-              cadastrais básicos de qualquer loja.
+              <strong>Basic Data:</strong> Dados padrão de qualquer loja, como
+              nome, endereços, telefone e email.
+            </p>
+          </div>
+
+          <div role="alert" className="alert alert-info">
+            <p className="leading-relaxed">
+              <strong>Seller Info:</strong> O núcleo, responsável pelos dados
+              cadastrais básicos de qualquer seller, mas com algumas
+              especificidades de acordo com seu tipo.
             </p>
           </div>
 
@@ -184,16 +189,16 @@ export default function Store() {
             <p className="leading-relaxed">
               <strong>Capacity:</strong> Controla a capacidade operacional da
               loja, permitindo o bloqueio de horários para expedição ou
-              retirada, com as mudanças propagadas via Kafka.
+              retirada, com as mudanças sendo propagadas via Kafka.
             </p>
           </div>
 
           <div role="alert" className="alert alert-info">
             <p className="leading-relaxed">
-              <strong>Auth:</strong> Implementa um sistema de autenticação via
-              API Keys com diferentes níveis de permissão (roles), protegendo
-              endpoints de escrita e garantindo que apenas sistemas autorizados
-              possam modificar os dados.
+              <strong>Auth:</strong> Sistema de autenticação via API Keys com
+              diferentes níveis de permissão (roles), protegendo endpoints de
+              escrita e garantindo que apenas sistemas autorizados possam
+              modificar os dados.
             </p>
           </div>
 
@@ -356,10 +361,11 @@ export default function Store() {
 
           <p className="leading-relaxed">
             Complementando a API, o portal de gerenciamento foi desenvolvido com{' '}
-            <strong>Next.js</strong>, proporcionando uma experiência de usuário
-            moderna, performática e reativa para os administradores e operadores
-            do sistema. A arquitetura do front-end foi pensada para consumir de
-            forma eficiente a <code>Store Portal API</code>.
+            <strong>Next.js</strong> e <strong>MaterialUI</strong>,
+            proporcionando uma experiência de usuário moderna, performática e
+            reativa para os administradores e operadores do sistema. A
+            arquitetura do front-end foi pensada para consumir de forma
+            eficiente a <code>Store Portal API</code>.
           </p>
 
           <div role="alert" className="alert alert-info">
@@ -385,7 +391,7 @@ export default function Store() {
 
           <div role="alert" className="alert alert-info">
             <p className="leading-relaxed">
-              <strong>Componentização:</strong> A interface foi construída com
+              <strong>Design System:</strong> A interface foi construída com
               base no <strong>MaterialUI</strong>, que é uma biblioteca de
               componentes reutilizáveis (ex: tabelas de dados, formulários,
               modais, inputs), garantindo consistência visual e agilidade no
@@ -461,17 +467,17 @@ export default function Store() {
           <h2 className="mt-10 text-2xl font-bold">Conclusão</h2>
 
           <p className="leading-relaxed">
-            A solução <strong>Store Portal</strong>, composta pela API em{' '}
+            A <strong>Store Portal</strong>, composta pela API em{' '}
             <strong>Nest.js</strong> e pelo portal em <strong>Next.js</strong>,
             representa uma plataforma full-stack completa para governança de
             dados em um ecossistema de e-commerce de larga escala.
           </p>
 
           <p className="leading-relaxed">
-            O projeto demonstra a arquitetura de sistemas distribuídos,
+            O projeto conta com uma a arquitetura de sistemas distribuídos,
             comunicação síncrona/assíncrona e boas práticas de desenvolvimento
             tanto no back-end quanto no front-end, resultando em uma aplicação
-            resiliente, escalável e com alta experiência de uso.
+            resiliente e escalável.
           </p>
 
           <Divider margin />

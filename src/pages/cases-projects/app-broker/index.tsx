@@ -66,7 +66,7 @@ export default function AppBroker() {
             </li>
             <li>
               <strong>Navegação Intuitiva:</strong> Menu lateral (Drawer
-              Navigator) para acesso rápido às diferentes seções do aplicativo.
+              Navigator) para acesso rápido às diferentes telas do aplicativo.
             </li>
             <li>
               <strong>Monitoramento de Performance:</strong> Integração com
@@ -82,17 +82,17 @@ export default function AppBroker() {
 
           <p className="leading-relaxed">
             O projeto segue uma arquitetura modular e componentizada, visando
-            reusabilidade, manutenibilidade e escalabilidade.
+            reusabilidade e escalabilidade.
           </p>
 
           <h3 className="mt-18 text-xl font-bold">Tecnologias Principais</h3>
 
           <div role="alert" className="alert alert-info">
             <p className="leading-relaxed">
-              <strong>Framework:</strong> React Native, framework que permite
-              criar aplicações para Android e iOS a partir de um único
-              código-fonte, poupando tempo, esforço no desenvolvimento e
-              evitando manutenção de dois projetos separados.
+              <strong>Framework:</strong> React Native, que permite criar
+              aplicações para Android e iOS a partir de um único código-fonte,
+              poupando tempo, esforço no desenvolvimento e evitando manutenção
+              de dois projetos separados.
             </p>
           </div>
           <div role="alert" className="alert alert-info">
@@ -125,20 +125,17 @@ export default function AppBroker() {
           </div>
           <div role="alert" className="alert alert-info">
             <p className="leading-relaxed">
-              <strong>Estilização:</strong> Styled Components (
-              <code>styled-components</code>), RNEUI (<code>@rneui/themed</code>
-              ), React Native Elements
+              <strong>Estilização:</strong> Styled Components e React Native
+              Elements
             </p>
           </div>
           <div role="alert" className="alert alert-info">
             <p className="leading-relaxed">
-              <strong>Análise de Performance:</strong> Datadog (
-              <code>@datadog/mobile-react-native</code>,{' '}
-              <code>@datadog/mobile-react-navigation</code>)
+              <strong>Análise de Performance:</strong> Datadog
             </p>
           </div>
 
-          <h3 className="mt-18 text-xl font-bold">Gerenciamento de Estado</h3>
+          {/* <h3 className="mt-18 text-xl font-bold">Gerenciamento de Estado</h3>
           <p className="leading-relaxed">
             O aplicativo utiliza o <strong>Hookstate</strong> para gerenciar o
             estado global. Isso permite que os dados sejam centralizados e
@@ -175,7 +172,7 @@ export default function AppBroker() {
             A lógica de navegação é centralizada em <code>routes.tsx</code>, que
             também lida com a verificação de autenticação e o controle do
             histórico de navegação.
-          </p>
+          </p> */}
 
           <h3 className="mt-18 text-xl font-bold">
             Interação com Hardware Específico (Cielo POS)
@@ -231,8 +228,8 @@ export default function AppBroker() {
 
           <p className="leading-relaxed">
             A comunicação com o backend é realizada utilizando o
-            <strong>React Query</strong>, uma biblioteca de consulta de dados
-            que permite que os dados sejam carregados de maneira assíncrona e
+            <strong>Axios</strong>, uma biblioteca de consulta de dados que
+            permite que os dados sejam carregados de maneira assíncrona e
             eficiente.
           </p>
 
