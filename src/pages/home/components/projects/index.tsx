@@ -3,6 +3,7 @@ import { SectionTitle } from '../../../../components/section-title';
 import { AppBroker } from './app-broker';
 import { FreightLogin } from './freight-login';
 import { Loveg } from './loveg';
+import { Onboarding } from './onboarding';
 import { Store } from './store';
 import { SwipeCards } from './swipe-cards';
 
@@ -31,6 +32,10 @@ export const Projects = () => {
 
           <Animation x={-50} once={true}>
             <SwipeCards />
+          </Animation>
+
+          <Animation x={50} once={true}>
+            <Onboarding />
           </Animation>
         </div>
       </div>

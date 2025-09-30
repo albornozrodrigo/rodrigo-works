@@ -8,6 +8,7 @@ import AppBroker from './pages/cases-projects/app-broker';
 import FreightLogin from './pages/cases-projects/feight-login';
 import Loveg from './pages/cases-projects/loveg';
 import Store from './pages/cases-projects/store-api';
+import Onboarding from './pages/code-samples/onboarding';
 import SwipeCards from './pages/code-samples/swipe-cards';
 import Home from './pages/home';
 
@@ -34,6 +35,7 @@ function App() {
           <Route path={CASES.FREIGHT_LOGIN} element={<FreightLogin />} />
           <Route path={PROJECTS.LOVEG} element={<Loveg />} />
           <Route path={CODE_SAMPLES.SWIPE_CARDS} element={<SwipeCards />} />
+          <Route path={CODE_SAMPLES.ONBOARDING} element={<Onboarding />} />
         </Routes>
       </Wrapper>
       <Divider />
