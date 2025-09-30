@@ -16,7 +16,7 @@ export default function SwipeCardsPage() {
           <p>
             <strong>Link do projeto (Micro Frontend):</strong>{' '}
             <a
-              href="onboarding-flame-pi.vercel.app/"
+              href="https://onboarding-flame-pi.vercel.app/"
               target="_blank"
               rel="noreferrer"
               className="underline"

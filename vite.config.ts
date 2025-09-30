@@ -32,7 +32,7 @@ export default defineConfig({
             : 'http://localhost:5001/assets/remoteEntry.js',
         onboarding:
           process.env.NODE_ENV === 'production'
-            ? 'onboarding-flame-pi.vercel.app/assets/remoteEntry.js'
+            ? 'https://onboarding-flame-pi.vercel.app/assets/remoteEntry.js'
             : 'http://localhost:5002/assets/remoteEntry.js',
       },
       shared: ['react', 'react-dom'],
