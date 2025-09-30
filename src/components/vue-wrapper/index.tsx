@@ -21,7 +21,7 @@ const VueWrapper: React.FC = () => {
   }
 
   // @ts-expect-error import
-  return <vue-onboarding />;
+  return <vue-onboarding className="w-full" />;
 };
 
 export default VueWrapper;
