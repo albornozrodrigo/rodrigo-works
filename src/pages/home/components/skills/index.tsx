@@ -73,7 +73,7 @@ const skillsList = {
     'Performance',
     // 'Accessibility',
     // 'Web Vitals',
-    'Micro Serviço',
+    'Micro Serviços',
     'API Design',
   ],
 };
