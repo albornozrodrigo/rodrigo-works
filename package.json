@@ -16,7 +16,6 @@
   "dependencies": {
     "@originjs/vite-plugin-federation": "^1.4.1",
     "@tailwindcss/vite": "^4.1.13",
-    "@vitejs/plugin-vue-jsx": "^5.1.1",
     "express": "^5.1.0",
     "framer-motion": "^12.23.19",
     "lucide-react": "^0.544.0",

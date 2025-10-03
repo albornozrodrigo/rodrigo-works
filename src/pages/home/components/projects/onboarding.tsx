@@ -1,4 +1,4 @@
-import { SmartphoneIcon } from 'lucide-react';
+import { StepForwardIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Card } from '../../../../components/card';
 import { CODE_SAMPLES } from '../../../../consts';
@@ -8,7 +8,7 @@ export const Onboarding = () => {
     <Card>
       <h3 className="card-title text-warning flex justify-between">
         <Link to={CODE_SAMPLES.ONBOARDING} className="flex items-center gap-2">
-          <SmartphoneIcon className="size-4" />
+          <StepForwardIcon className="size-4" />
           Onboarding
         </Link>
 

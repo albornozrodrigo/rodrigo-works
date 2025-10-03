@@ -64,8 +64,8 @@ const skillsList = {
     'Linux',
     'Git',
     'Github',
-    // 'Github Actions',
-    'Gitlab',
+    'Github Actions',
+    'Gitlab CI',
   ],
   other: [
     'UX/UI',
