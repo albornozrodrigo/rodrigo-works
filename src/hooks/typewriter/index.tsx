@@ -19,5 +19,5 @@ export default function useTypewriter({ text, speed = 100 }: TypewriterProps) {
     }
   }, [index, text, speed]);
 
-  return <>{displayedText}</>;
+  return displayedText;
 }

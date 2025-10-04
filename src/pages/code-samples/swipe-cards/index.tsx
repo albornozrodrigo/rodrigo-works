@@ -18,6 +18,23 @@ export default function SwipeCardsPage() {
             relacionamento.
           </p>
 
+          <ul>
+            <li>
+              Testes automatizados com <strong>React Testing Library</strong> +{' '}
+              <strong>Jest</strong>
+            </li>
+            <li>
+              Testes e2e com <strong>Playwright</strong>
+            </li>
+            <li>CI/CD com Github Actions e deploy na Vercel.</li>
+            <li>
+              Execução de testes de segurança e verificação de vulnerabilidades
+              das dependências com
+              <strong>Snyk</strong> na pipeline de deploy.
+            </li>
+            <li>Execução dos testes automatizados na pipeline de deploy.</li>
+          </ul>
+
           <p>
             <strong>Link do projeto (Micro Frontend):</strong>{' '}
             <a

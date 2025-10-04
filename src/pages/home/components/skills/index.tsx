@@ -40,10 +40,11 @@ const skillsList = {
     'Jotai',
 
     'Jest',
+    'React Testing Library',
+    'Playwright',
     // 'Storybook',
-    // 'React Testing Library',
-    // 'Playwright',
     // 'Vitest',
+    // 'Cypress'
 
     'Zod',
     'Module Federation (Micro Frontends)',
