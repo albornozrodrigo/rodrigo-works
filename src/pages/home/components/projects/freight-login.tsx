@@ -7,13 +7,17 @@ export const FreightLogin = () => {
   return (
     <Card>
       <h3 className="card-title text-secondary flex justify-between">
-        <Link to={CASES.FREIGHT_LOGIN} className="flex items-center gap-2">
+        <Link
+          rel="noreferrer noopener"
+          to={CASES.FREIGHT_LOGIN}
+          className="flex items-center gap-2"
+        >
           <LogInIcon className="size-4" />
           Sistema de Autenticação
         </Link>
         <span className="badge badge-secondary badge-xs">CASE</span>
       </h3>
-      <Link to={CASES.FREIGHT_LOGIN}>
+      <Link rel="noreferrer noopener" to={CASES.FREIGHT_LOGIN}>
         Sistema de login unificado em plataforma para autenticação e controle de
         usuários e aplicações da equipe.
       </Link>

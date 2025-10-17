@@ -7,13 +7,17 @@ export const Store = () => {
   return (
     <Card>
       <h3 className="card-title text-secondary flex justify-between">
-        <Link to={CASES.STORE} className="flex items-center gap-2">
+        <Link
+          rel="noreferrer noopener"
+          to={CASES.STORE}
+          className="flex items-center gap-2"
+        >
           <StoreIcon className="size-4" />
           Sistema de Gestão de Sellers
         </Link>
         <span className="badge badge-secondary badge-xs">CASE</span>
       </h3>
-      <Link to={CASES.STORE}>
+      <Link rel="noreferrer noopener" to={CASES.STORE}>
         Plataforma completa para gerenciamento de marketplace com configurações
         de entrega, dimensões, endereços de milhares de sellers.
       </Link>

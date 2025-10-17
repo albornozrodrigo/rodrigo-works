@@ -2,15 +2,7 @@ import { act, render, screen } from '@testing-library/react';
 import SwipeCardsPage from './index';
 
 describe('SwipeCardsPage', () => {
-  beforeEach(() => {
-    jest.useFakeTimers();
-  });
-
-  afterEach(() => {
-    jest.useRealTimers();
-  });
-
-  it('renders the title correctly', async () => {
+  it('should render the component correctly', async () => {
     act(() => {
       render(<SwipeCardsPage />);
     });
@@ -68,11 +60,12 @@ describe('SwipeCardsPage', () => {
   //   expect(screen.getByText(/Loading.../i)).toBeInTheDocument();
   // });
 
-  test('mostra microfrontend renderizado', async () => {
+  it('should render the microfrontend correctly', async () => {
     act(() => {
       render(<SwipeCardsPage />);
     });
 
+    expect(screen.getByTestId('swipe-cards')).toBeInTheDocument();
     expect(
       await screen.findByText(/SwipeCards Renderizado/i),
     ).toBeInTheDocument();

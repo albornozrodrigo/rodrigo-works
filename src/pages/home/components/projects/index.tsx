@@ -2,6 +2,7 @@ import { Animation } from '../../../../components/animation';
 import { SectionTitle } from '../../../../components/section-title';
 import { AppBroker } from './app-broker';
 import { FreightLogin } from './freight-login';
+import { GraphqlApiSchemaFirst } from './graphql-schema-first';
 import { Loveg } from './loveg';
 import { Onboarding } from './onboarding';
 import { Store } from './store';
@@ -36,6 +37,10 @@ export const Projects = () => {
 
           <Animation x={50} once={true}>
             <Onboarding />
+          </Animation>
+
+          <Animation x={-50} once={true}>
+            <GraphqlApiSchemaFirst />
           </Animation>
         </div>
       </div>
