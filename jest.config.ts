@@ -9,7 +9,8 @@ export default {
   moduleNameMapper: {
     '\\.(jpg|jpeg|png|gif|svg|webp|avif)$': '<rootDir>/__mocks__/fileMock.ts',
     '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
-    '^swipe/swipe-cards$': '<rootDir>/__mocks__/swipe/swipeCards.tsx',
+    '^swipe/swipe-cards$': '<rootDir>/__mocks__/swipe/index.tsx',
+    '^onboarding/app$': '<rootDir>/__mocks__/onboarding/index.tsx',
   },
   modulePathIgnorePatterns: ['e2e'],
 };

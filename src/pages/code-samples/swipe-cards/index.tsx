@@ -40,7 +40,7 @@ export default function SwipeCardsPage() {
             <a
               href="https://swipe-cards-beryl.vercel.app/"
               target="_blank"
-              rel="noreferrer"
+              rel="noreferrer noopenner"
               className="underline"
             >
               https://swipe-cards-beryl.vercel.app/
@@ -52,7 +52,7 @@ export default function SwipeCardsPage() {
             <a
               href="https://github.com/albornozrodrigo/swipe-cards"
               target="_blank"
-              rel="noreferrer"
+              rel="noreferrer noopenner"
               className="underline"
             >
               https://github.com/albornozrodrigo/swipe-cards

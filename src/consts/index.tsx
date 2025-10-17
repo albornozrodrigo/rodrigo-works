@@ -11,4 +11,5 @@ export const PROJECTS = {
 export const CODE_SAMPLES = {
   SWIPE_CARDS: '/code-samples/swipe-cards',
   ONBOARDING: '/code-samples/onboarding',
+  GQL_API_SCHEMA_FIRST: '/code-samples/graphql-api-schema-first',
 };

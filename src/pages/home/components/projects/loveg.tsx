@@ -8,6 +8,7 @@ export const Loveg = () => {
     <Card>
       <h3 className="card-title flex justify-between">
         <Link
+          rel="noreferrer noopener"
           to={PROJECTS.LOVEG}
           className="text-success flex items-center gap-2"
         >
@@ -16,7 +17,7 @@ export const Loveg = () => {
         </Link>
         <span className="badge badge-success badge-xs">PROJETO PESSOAL</span>
       </h3>
-      <Link to={PROJECTS.LOVEG}>
+      <Link rel="noreferrer noopener" to={PROJECTS.LOVEG}>
         Primeira plataforma brasileira de relacionamento focada em pessoas
         vegetarianas e veganas. Reconhecida pela mídia nacional.
       </Link>

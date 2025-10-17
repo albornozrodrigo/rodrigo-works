@@ -7,14 +7,18 @@ export const Onboarding = () => {
   return (
     <Card>
       <h3 className="card-title text-warning flex justify-between">
-        <Link to={CODE_SAMPLES.ONBOARDING} className="flex items-center gap-2">
+        <Link
+          rel="noreferrer noopener"
+          to={CODE_SAMPLES.ONBOARDING}
+          className="flex items-center gap-2"
+        >
           <StepForwardIcon className="size-4" />
           Onboarding
         </Link>
 
         <span className="badge badge-warning badge-xs">CODE SAMPLE</span>
       </h3>
-      <Link to={CODE_SAMPLES.ONBOARDING}>
+      <Link rel="noreferrer noopener" to={CODE_SAMPLES.ONBOARDING}>
         Componente de Onboarding feito utilizando <strong>VueJS</strong>,{' '}
         <strong>TypeScript</strong> e <strong>TailwindCSS</strong>.
       </Link>

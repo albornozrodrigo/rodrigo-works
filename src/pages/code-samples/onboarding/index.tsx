@@ -18,7 +18,7 @@ export default function SwipeCardsPage() {
             <a
               href="https://onboarding-flame-pi.vercel.app/"
               target="_blank"
-              rel="noreferrer"
+              rel="noreferrer noopenner"
               className="underline"
             >
               https://onboarding-flame-pi.vercel.app/
@@ -30,7 +30,7 @@ export default function SwipeCardsPage() {
             <a
               href="https://github.com/albornozrodrigo/onboarding"
               target="_blank"
-              rel="noreferrer"
+              rel="noreferrer noopenner"
               className="underline"
             >
               https://github.com/albornozrodrigo/onboarding

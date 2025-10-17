@@ -6,6 +6,7 @@ import { Navbar } from './components/navbar';
 import { CASES, CODE_SAMPLES, PROJECTS } from './consts';
 import AppBroker from './pages/cases-projects/app-broker';
 import FreightLogin from './pages/cases-projects/feight-login';
+import GraphQLApiSchemaFirst from './pages/cases-projects/graphql-schema-first';
 import Loveg from './pages/cases-projects/loveg';
 import Store from './pages/cases-projects/store-api';
 import Onboarding from './pages/code-samples/onboarding';
@@ -36,6 +37,10 @@ function App() {
           <Route path={PROJECTS.LOVEG} element={<Loveg />} />
           <Route path={CODE_SAMPLES.SWIPE_CARDS} element={<SwipeCards />} />
           <Route path={CODE_SAMPLES.ONBOARDING} element={<Onboarding />} />
+          <Route
+            path={CODE_SAMPLES.GQL_API_SCHEMA_FIRST}
+            element={<GraphQLApiSchemaFirst />}
+          />
         </Routes>
       </Wrapper>
       <Divider />
