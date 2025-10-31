@@ -15,8 +15,8 @@ export const Header = () => {
   const profile: Profile = {
     name,
     email: 'rodrigo.albornoz.f@gmail.com',
-    hireable: true,
-    company: null,
+    hireable: false,
+    company: 'Sympla',
     location: 'São Paulo',
     github: 'https://github.com/albornozrodrigo',
     linkedIn: 'https://www.linkedin.com/in/albornozrodrigo/',
