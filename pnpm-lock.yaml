@@ -36,8 +36,8 @@ importers:
         specifier: ^7.9.3
         version: 7.9.4(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       tailwindcss:
-        specifier: ^4.1.13
-        version: 4.1.13
+        specifier: ^4.1.16
+        version: 4.1.16
     devDependencies:
       '@babel/preset-env':
         specifier: ^7.28.3
@@ -3440,6 +3440,9 @@ packages:
 
   tailwindcss@4.1.13:
     resolution: {integrity: sha512-i+zidfmTqtwquj4hMEwdjshYYgMbOrPzb9a0M3ZgNa0JMoZeFC6bxZvO8yr8ozS6ix2SDz0+mvryPeBs2TFE+w==}
+
+  tailwindcss@4.1.16:
+    resolution: {integrity: sha512-pONL5awpaQX4LN5eiv7moSiSPd/DLDzKVRJz8Q9PgzmAdd1R4307GQS2ZpfiN7ZmekdQrfhZZiSE5jkLR4WNaA==}
 
   tapable@2.2.3:
     resolution: {integrity: sha512-ZL6DDuAlRlLGghwcfmSn9sK3Hr6ArtyudlSAiCqQ6IfE+b+HHbydbYDIG15IfS5do+7XQQBdBiubF/cV2dnDzg==}
@@ -7399,6 +7402,8 @@ snapshots:
       '@pkgr/core': 0.2.9
 
   tailwindcss@4.1.13: {}
+
+  tailwindcss@4.1.16: {}
 
   tapable@2.2.3: {}
 
