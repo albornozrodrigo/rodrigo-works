@@ -25,3 +25,8 @@ dist-ssr
 *.sln
 *.sw?
 .__mf__temp/*
+
+# Artefatos de teste/build
+test-results
+playwright-report
+*.tsbuildinfo

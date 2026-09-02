@@ -1,0 +1,7 @@
+dist
+dist-ssr
+coverage
+test-results
+playwright-report
+pnpm-lock.yaml
+.__mf__temp
