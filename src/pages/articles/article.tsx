@@ -1,11 +1,64 @@
 import { ArrowLeftIcon, CalendarIcon, ClockIcon } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Divider } from '../../components/divider';
 import { Seo } from '../../components/seo';
 import { ROUTES } from '../../consts';
-import { findArticle, formatArticleDate } from '../../data/articles';
+import {
+  findArticle,
+  formatArticleDate,
+  loadArticleBody,
+} from '../../data/articles';
 import NotFound from '../not-found';
 import { ArticleBody } from './markdown';
+
+/**
+ * O markdown vem em um chunk próprio, baixado só ao abrir o artigo.
+ *
+ * Carregamento explícito em vez de `use()` + Suspense: o estado de erro fica
+ * declarado, e o comportamento é o mesmo em teste e em produção.
+ */
+const LazyArticleBody = ({ slug }: { slug: string }) => {
+  const [state, setState] = useState<
+    | { status: 'loading' }
+    | { status: 'ready'; body: string }
+    | { status: 'error' }
+  >({ status: 'loading' });
+
+  useEffect(() => {
+    let cancelled = false;
+
+    loadArticleBody(slug)
+      .then(body => {
+        if (!cancelled) setState({ status: 'ready', body });
+      })
+      .catch(() => {
+        if (!cancelled) setState({ status: 'error' });
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [slug]);
+
+  if (state.status === 'loading') {
+    return (
+      <p className="text-base-content/60" role="status" aria-live="polite">
+        Carregando o artigo…
+      </p>
+    );
+  }
+
+  if (state.status === 'error') {
+    return (
+      <div role="alert" className="alert alert-error">
+        Não foi possível carregar o conteúdo deste artigo.
+      </div>
+    );
+  }
+
+  return <ArticleBody>{state.body}</ArticleBody>;
+};
 
 export default function ArticlePage() {
   const { slug } = useParams<{ slug: string }>();
@@ -59,7 +112,9 @@ export default function ArticlePage() {
         <Divider margin />
 
         <div className="space-y-6">
-          <ArticleBody>{article.body}</ArticleBody>
+          {/* `key` faz o React remontar ao trocar de artigo, resetando o
+              estado de carregamento sem um setState dentro do effect. */}
+          <LazyArticleBody key={article.slug} slug={article.slug} />
         </div>
 
         <Divider margin />

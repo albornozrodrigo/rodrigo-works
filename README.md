@@ -85,8 +85,9 @@ versionado aqui; o link para o dev.to é apenas a publicação original.
 O corpo é renderizado por `react-markdown` + `remark-gfm` (tabelas, código),
 com os componentes mapeados em
 [`src/pages/articles/markdown.tsx`](src/pages/articles/markdown.tsx) para
-manter a mesma tipografia das páginas de case. Esse parser vive num chunk
-próprio, carregado só ao abrir um artigo.
+manter a mesma tipografia das páginas de case. Metadados e corpo ficam
+separados de propósito: a home e a listagem só precisam de título e descrição,
+e cada `.md` vira um chunk próprio buscado apenas quando o artigo é aberto.
 
 ### Atualizando o currículo
 
@@ -102,6 +103,19 @@ Título, descrição, canonical e Open Graph são definidos por rota pelo
 componente [`<Seo>`](src/components/seo/index.tsx), que usa o hoisting nativo de
 `<title>`/`<meta>` do React 19 — sem `react-helmet`. A home também emite
 JSON-LD `schema.org/Person`.
+
+## Notas de build
+
+### Module Federation e chunking manual
+
+Não use `build.rollupOptions.output.advancedChunks` (nem `manualChunks`) para
+separar react/react-dom em um chunk de vendor. Isso conflita com o shim de
+módulos compartilhados do `vite-plugin-federation`: o bootstrap trava **sem
+lançar erro** e o site sobe com a página em branco — e só em produção, porque o
+dev server não passa por esse caminho. É por isso que o Playwright roda contra
+`build && preview`, e não contra o `pnpm dev`.
+
+O ganho real de carregamento vem do `React.lazy` por rota.
 
 ## Nota sobre TypeScript
 

@@ -1,6 +1,12 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
-import { ARTICLES, articlesByDate, findArticle } from '../../data/articles';
+import {
+  ARTICLES,
+  articlesByDate,
+  findArticle,
+  hasArticleBody,
+  loadArticleBody,
+} from '../../data/articles';
 import ArticlePage from './article';
 import Articles from './index';
 
@@ -33,10 +39,17 @@ describe('dados das publicações', () => {
     expect(new Set(slugs).size).toBe(slugs.length);
   });
 
-  it('carrega o markdown de cada artigo', () => {
+  it('tem um arquivo de markdown para cada entrada', async () => {
     for (const article of ARTICLES) {
-      expect(article.body.length).toBeGreaterThan(500);
+      expect(hasArticleBody(article.slug)).toBe(true);
+      await expect(loadArticleBody(article.slug)).resolves.toContain('##');
     }
+  });
+
+  it('memoiza a promise do corpo, para não refetchar a cada render', () => {
+    const [article] = ARTICLES;
+
+    expect(loadArticleBody(article.slug)).toBe(loadArticleBody(article.slug));
   });
 
   it('devolve undefined para slug desconhecido', () => {
@@ -67,17 +80,18 @@ describe('listagem de publicações', () => {
 });
 
 describe('página do artigo', () => {
-  it('renderiza título e conteúdo em markdown', () => {
+  it('renderiza título e conteúdo em markdown', async () => {
     const [article] = articlesByDate();
     renderArticle(article.slug);
 
     expect(
       screen.getByRole('heading', { name: article.title, level: 1 }),
     ).toBeInTheDocument();
-    // O markdown vira headings de verdade, não texto cru.
-    expect(screen.getAllByRole('heading', { level: 2 }).length).toBeGreaterThan(
-      0,
-    );
+    // O corpo chega por Suspense (import dinâmico + parse do markdown), então
+    // o timeout padrão de 1s do findBy* fica no limite.
+    expect(
+      await screen.findAllByRole('heading', { level: 2 }, { timeout: 5000 }),
+    ).not.toHaveLength(0);
   });
 
   it('credita a publicação original', () => {

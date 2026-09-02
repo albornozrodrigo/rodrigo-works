@@ -58,25 +58,11 @@ export default defineConfig({
     sourcemap: false,
     reportCompressedSize: true,
     chunkSizeWarningLimit: 600,
-    rollupOptions: {
-      output: {
-        // Separa as libs que quase nunca mudam do código da aplicação, para
-        // que um deploy de conteúdo não invalide o cache do vendor.
-        // O Vite 8 usa Rolldown: `manualChunks` deu lugar a `advancedChunks`.
-        advancedChunks: {
-          groups: [
-            {
-              name: 'react',
-              test: /node_modules[\\/](react|react-dom|react-router|react-router-dom|scheduler)[\\/]/,
-            },
-            {
-              name: 'motion',
-              test: /node_modules[\\/](framer-motion|motion-dom|motion-utils)[\\/]/,
-            },
-          ],
-        },
-      },
-    },
+    // Sem chunking manual de vendor de propósito.
+    // Forçar react/react-dom em um chunk próprio (`advancedChunks`) conflita
+    // com o shim de módulos compartilhados do vite-plugin-federation: o
+    // bootstrap trava sem erro e o site sobe em branco. O ganho real de
+    // carregamento vem do React.lazy por rota, não do split manual.
   },
   preview: {
     port: 5173,
