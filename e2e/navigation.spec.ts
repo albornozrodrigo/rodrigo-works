@@ -45,6 +45,32 @@ test('navega para o currículo pela navbar', async ({ page }) => {
   ).toBeVisible();
 });
 
+test('lista e abre as publicações', async ({ page }) => {
+  await page.goto('/');
+  await page.getByRole('link', { name: 'Ver todas as publicações' }).click();
+  await expect(page).toHaveURL('/artigos');
+
+  const firstArticle = page
+    .getByRole('link', { name: /Frugal Cascade/ })
+    .first();
+  const title = await firstArticle.innerText();
+  await firstArticle.click();
+
+  await expect(page).toHaveURL(/\/artigos\/frugal-cascade/);
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText(title);
+  // O markdown precisa virar HTML de verdade, não texto cru com '##'.
+  await expect(page.getByRole('heading', { level: 2 }).first()).toBeVisible();
+  await expect(page.getByRole('table')).toBeVisible();
+});
+
+test('slug de artigo inexistente cai no 404', async ({ page }) => {
+  await page.goto('/artigos/nao-existe');
+
+  await expect(
+    page.getByRole('heading', { name: 'Página não encontrada' }),
+  ).toBeVisible();
+});
+
 test('mostra a página 404 em rota inexistente', async ({ page }) => {
   await page.goto('/rota/que/nao/existe');
 

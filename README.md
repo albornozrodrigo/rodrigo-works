@@ -60,15 +60,33 @@ pnpm dev          # http://localhost:5173
 src/
 ├── components/    # UI compartilhada (card, navbar, footer, seo, icons…)
 ├── consts/        # rotas e dados de contato — fonte única de verdade
-├── data/cv.ts     # conteúdo do currículo; alimenta a home e a página /cv
+├── content/       # markdown dos artigos publicados
+├── data/          # cv.ts e articles.ts — conteúdo, separado da apresentação
 ├── hooks/
 ├── pages/
 │   ├── home/          # header, sobre, skills e os cards de projeto
 │   ├── cv/            # currículo completo, imprimível como PDF
+│   ├── articles/      # listagem e leitura das publicações
 │   ├── cases-projects/# escrita técnica longa de cada case
 │   └── code-samples/  # páginas que montam os micro frontends
 └── interfaces/
 ```
+
+### Publicando um artigo
+
+1. Salve o markdown em `src/content/articles/<slug>.md`.
+2. Acrescente uma entrada em [`src/data/articles.ts`](src/data/articles.ts) com
+   título, descrição, data, tags e a URL da publicação original.
+
+A rota `/artigos/<slug>`, a listagem, a seção da home e o SEO saem disso
+automaticamente — só o `public/sitemap.xml` precisa da nova URL. O conteúdo fica
+versionado aqui; o link para o dev.to é apenas a publicação original.
+
+O corpo é renderizado por `react-markdown` + `remark-gfm` (tabelas, código),
+com os componentes mapeados em
+[`src/pages/articles/markdown.tsx`](src/pages/articles/markdown.tsx) para
+manter a mesma tipografia das páginas de case. Esse parser vive num chunk
+próprio, carregado só ao abrir um artigo.
 
 ### Atualizando o currículo
 

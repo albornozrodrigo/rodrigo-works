@@ -9,6 +9,18 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://rodrigo-works.vercel.app/artigos</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rodrigo-works.vercel.app/artigos/frugal-cascade</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rodrigo-works.vercel.app/artigos/module-federation-nextjs</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://rodrigo-works.vercel.app/cases/store</loc>
     <priority>0.8</priority>
   </url>

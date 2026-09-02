@@ -3,6 +3,7 @@ import { Seo } from '../../components/seo';
 import { PROFILE, SITE_URL } from '../../consts';
 import { EXPERIENCES, SKILLS } from '../../data/cv';
 import { About } from './components/about';
+import { Articles } from './components/articles';
 import { Header } from './components/header';
 import { Projects } from './components/projects';
 import { Skills } from './components/skills';
@@ -47,6 +48,8 @@ export default function Home() {
       <Skills />
       <Divider />
       <Projects />
+      <Divider />
+      <Articles />
     </div>
   );
 }

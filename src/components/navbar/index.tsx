@@ -36,6 +36,11 @@ export const Navbar = () => {
             </>
           )}
           <li>
+            <Link to={ROUTES.ARTICLES} className="hover:text-secondary">
+              Artigos
+            </Link>
+          </li>
+          <li>
             <Link to={ROUTES.CV} className="hover:text-secondary">
               Currículo
             </Link>

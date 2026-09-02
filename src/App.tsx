@@ -24,6 +24,8 @@ const GraphQLApiCodeFirst = lazy(
 const SwipeCards = lazy(() => import('./pages/code-samples/swipe-cards'));
 const Onboarding = lazy(() => import('./pages/code-samples/onboarding'));
 const Cv = lazy(() => import('./pages/cv'));
+const Articles = lazy(() => import('./pages/articles'));
+const Article = lazy(() => import('./pages/articles/article'));
 const NotFound = lazy(() => import('./pages/not-found'));
 
 const Wrapper = ({ children }: PropsWithChildren) => {
@@ -57,6 +59,8 @@ function App() {
           <Routes>
             <Route path={ROUTES.HOME} element={<Home />} />
             <Route path={ROUTES.CV} element={<Cv />} />
+            <Route path={ROUTES.ARTICLES} element={<Articles />} />
+            <Route path={`${ROUTES.ARTICLES}/:slug`} element={<Article />} />
             <Route path={CASES.STORE} element={<Store />} />
             <Route path={CASES.APP_BROKER} element={<AppBroker />} />
             <Route path={CASES.FREIGHT_LOGIN} element={<FreightLogin />} />

@@ -18,6 +18,7 @@ export const CODE_SAMPLES = {
 export const ROUTES = {
   HOME: '/',
   CV: '/cv',
+  ARTICLES: '/artigos',
 };
 
 export const SITE_URL = 'https://rodrigo-works.vercel.app';
