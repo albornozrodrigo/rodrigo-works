@@ -114,7 +114,9 @@ export const Header = () => {
       </div>
 
       <div className="absolute bottom-4 flex flex-col items-center justify-center">
-        <div className="transform animate-bounce">
+        {/* A seta pisca infinitamente; `motion-reduce` a congela para quem
+            pediu menos movimento no sistema. */}
+        <div className="transform animate-bounce motion-reduce:animate-none">
           <ChevronDownIcon
             className="text-white"
             size={24}
