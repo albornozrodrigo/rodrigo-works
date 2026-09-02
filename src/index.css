@@ -1,17 +1,17 @@
-@import "tailwindcss";
-@plugin "daisyui";
+@import 'tailwindcss';
+@plugin 'daisyui';
 
-@plugin "daisyui" {
+@plugin 'daisyui' {
   themes:
     light --default,
     dark --prefersdark;
 }
 
-@plugin "daisyui/theme" {
-  name: "light";
+@plugin 'daisyui/theme' {
+  name: 'light';
   default: true;
   prefersdark: true;
-  color-scheme: "light";
+  color-scheme: 'light';
   --color-base-100: oklch(98% 0 0);
   --color-base-200: oklch(96% 0.001 286.375);
   --color-base-300: oklch(92% 0.004 286.32);
@@ -42,12 +42,11 @@
   --noise: 0;
 }
 
-
-@plugin "daisyui/theme" {
-  name: "dark";
+@plugin 'daisyui/theme' {
+  name: 'dark';
   default: false;
   prefersdark: false;
-  color-scheme: "dark";
+  color-scheme: 'dark';
   --color-base-100: oklch(25.33% 0.016 252.42);
   --color-base-200: oklch(23.26% 0.014 253.1);
   --color-base-300: oklch(21.15% 0.012 254.09);
@@ -78,22 +77,40 @@
   --noise: 0;
 }
 
-@layer utility {
-  .bg-grid {
-    background-image: linear-gradient(hsla(0, 0%, 100%, .1) 1px, transparent 0), linear-gradient(90deg, hsla(0, 0%, 100%, .1) 1px, transparent 0);
-    background-size: 32px 32px;
-    transform: perspective(500px) rotateX(60deg);
-    transform-origin: top;
-  }
+@utility gradient-text {
+  background: linear-gradient(
+    135deg,
+    var(--color-indigo-400) 0%,
+    var(--color-purple-400) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
 
-  .text-gradient {
-    background: linear-gradient(135deg, var(--color-indigo-500) 0%, var(--color-purple-500) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+@keyframes wave {
+  0%,
+  60%,
+  100% {
+    transform: rotate(0deg);
+  }
+  10%,
+  30% {
+    transform: rotate(14deg);
+  }
+  20%,
+  40% {
+    transform: rotate(-8deg);
   }
 }
 
-.animate-pulse-slow {
-  animation: pulse 4s cubic-bezier(.4, 0, .6, 1) infinite;
+.waving-hand {
+  transform-origin: 70% 70%;
+  animation: wave 2.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .waving-hand {
+    animation: none;
+  }
 }

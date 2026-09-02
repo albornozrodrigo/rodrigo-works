@@ -8,18 +8,19 @@ export const Loveg = () => {
     <Card>
       <h3 className="card-title flex justify-between">
         <Link
-          rel="noreferrer noopener"
           to={PROJECTS.LOVEG}
           className="text-success flex items-center gap-2"
         >
-          <HeartIcon className="size-4" />
+          <HeartIcon className="size-4" aria-hidden="true" />
           Loveg - v1 / v2
         </Link>
         <span className="badge badge-success badge-xs">PROJETO PESSOAL</span>
       </h3>
-      <Link rel="noreferrer noopener" to={PROJECTS.LOVEG}>
+      <Link to={PROJECTS.LOVEG}>
         Primeira plataforma brasileira de relacionamento focada em pessoas
-        vegetarianas e veganas. Reconhecida pela mídia nacional.
+        vegetarianas e veganas — produto tocado do zero, do back-end ao app
+        Android, incluindo chat em tempo real com Socket.io + Redis. Rendeu
+        matérias na Folha de S.Paulo, Catraca Livre e Revista dos Vegetarianos.
       </Link>
       <div className="mt-4 flex flex-wrap gap-2">
         <span className="badge badge-primary">AngularJS</span>

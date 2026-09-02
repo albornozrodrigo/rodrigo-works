@@ -1,58 +1,57 @@
 import { render, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import { Navbar } from './index';
 
+const renderAt = (route: string) =>
+  render(
+    <MemoryRouter initialEntries={[route]}>
+      <Navbar />
+    </MemoryRouter>,
+  );
+
 describe('Navbar', () => {
-  it('deve renderizar o componente Navbar corretamente', () => {
-    render(<Navbar />);
+  it('leva o logo para a home', () => {
+    renderAt('/');
 
-    const logoLink = screen.getByText('<rodrigo.works>');
-    expect(logoLink).toBeInTheDocument();
-    expect(logoLink).toHaveAttribute('href', '/');
+    expect(
+      screen.getByRole('link', { name: '<rodrigo.works>' }),
+    ).toHaveAttribute('href', '/');
   });
 
-  it('deve ter as classes CSS corretas', () => {
-    render(<Navbar />);
+  it('mostra as âncoras das seções quando está na home', () => {
+    renderAt('/');
 
-    const navbar = screen.getByText('<rodrigo.works>').closest('.navbar');
-    expect(navbar).toHaveClass(
-      'navbar',
-      'absolute',
-      'top-0',
-      'left-0',
-      'z-50',
-      'bg-transparent',
-      'text-white',
+    expect(screen.getByRole('link', { name: 'Sobre' })).toHaveAttribute(
+      'href',
+      '#about',
+    );
+    expect(screen.getByRole('link', { name: 'Stack' })).toHaveAttribute(
+      'href',
+      '#skills',
+    );
+    expect(screen.getByRole('link', { name: 'Projetos' })).toHaveAttribute(
+      'href',
+      '#projects',
     );
   });
 
-  it('deve ter o link do logo com as classes de hover corretas', () => {
-    render(<Navbar />);
+  it('esconde as âncoras de seção fora da home, onde elas não existem', () => {
+    renderAt('/cases/store');
 
-    const logoLink = screen.getByText('<rodrigo.works>');
-    expect(logoLink).toHaveClass(
-      'hover:text-secondary',
-      'ml-2',
-      'text-sm',
-      'transition-all',
-      'duration-300',
+    expect(
+      screen.queryByRole('link', { name: 'Sobre' }),
+    ).not.toBeInTheDocument();
+    expect(
+      screen.queryByRole('link', { name: 'Stack' }),
+    ).not.toBeInTheDocument();
+  });
+
+  it('expõe o link do currículo em qualquer rota', () => {
+    renderAt('/cases/store');
+
+    expect(screen.getByRole('link', { name: 'Currículo' })).toHaveAttribute(
+      'href',
+      '/cv',
     );
-  });
-
-  it('deve renderizar o toggle de tema (mesmo que oculto)', () => {
-    render(<Navbar />);
-
-    const themeToggle = screen.getByRole('checkbox');
-    expect(themeToggle).toBeInTheDocument();
-    expect(themeToggle).toHaveAttribute('type', 'checkbox');
-    expect(themeToggle).toHaveClass('theme-controller');
-    expect(themeToggle).toHaveAttribute('value', 'dark');
-  });
-
-  it('deve ter o container do toggle com as classes corretas', () => {
-    render(<Navbar />);
-
-    const toggleContainer = screen.getByRole('checkbox').closest('.swap');
-    expect(toggleContainer).toHaveClass('swap', 'swap-rotate', 'rounded-full');
   });
 });
-

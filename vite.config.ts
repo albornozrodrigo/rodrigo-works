@@ -1,8 +1,15 @@
 import federation from '@originjs/vite-plugin-federation';
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
-import { fileURLToPath } from 'url';
+import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite';
+
+const isProduction = process.env.NODE_ENV === 'production';
+
+const remote = (production: string, devPort: number) =>
+  isProduction
+    ? production
+    : `http://localhost:${devPort}/assets/remoteEntry.js`;
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -13,11 +20,13 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@/': fileURLToPath(new URL('./src', import.meta.url)),
+      // Do mais específico para o mais genérico: o Vite testa os aliases em
+      // ordem e '@/' casaria antes de '@/components'.
       '@/components': fileURLToPath(
         new URL('./src/components', import.meta.url),
       ),
       '@/pages': fileURLToPath(new URL('./src/pages', import.meta.url)),
+      '@/': fileURLToPath(new URL('./src/', import.meta.url)),
     },
   },
   plugins: [
@@ -26,22 +35,48 @@ export default defineConfig({
     federation({
       name: 'container',
       remotes: {
-        swipe:
-          process.env.NODE_ENV === 'production'
-            ? 'https://swipe-cards-beryl.vercel.app/assets/remoteEntry.js'
-            : 'http://localhost:5001/assets/remoteEntry.js',
-        onboarding:
-          process.env.NODE_ENV === 'production'
-            ? 'https://onboarding-flame-pi.vercel.app/assets/remoteEntry.js'
-            : 'http://localhost:5002/assets/remoteEntry.js',
+        swipe: remote(
+          'https://swipe-cards-beryl.vercel.app/assets/remoteEntry.js',
+          5001,
+        ),
+        onboarding: remote(
+          'https://onboarding-flame-pi.vercel.app/assets/remoteEntry.js',
+          5002,
+        ),
       },
       shared: ['react', 'react-dom'],
     }),
   ],
   build: {
     target: 'esnext',
-    minify: false,
-    cssCodeSplit: false,
+    // Estava `false`, o que publicava o bundle inteiro sem minificar.
+    minify: 'oxc',
+    cssMinify: true,
+    // Mantém o CSS por chunk: a home não precisa baixar o CSS das páginas
+    // de case que só carregam sob demanda.
+    cssCodeSplit: true,
+    sourcemap: false,
+    reportCompressedSize: true,
+    chunkSizeWarningLimit: 600,
+    rollupOptions: {
+      output: {
+        // Separa as libs que quase nunca mudam do código da aplicação, para
+        // que um deploy de conteúdo não invalide o cache do vendor.
+        // O Vite 8 usa Rolldown: `manualChunks` deu lugar a `advancedChunks`.
+        advancedChunks: {
+          groups: [
+            {
+              name: 'react',
+              test: /node_modules[\\/](react|react-dom|react-router|react-router-dom|scheduler)[\\/]/,
+            },
+            {
+              name: 'motion',
+              test: /node_modules[\\/](framer-motion|motion-dom|motion-utils)[\\/]/,
+            },
+          ],
+        },
+      },
+    },
   },
   preview: {
     port: 5173,

@@ -6,10 +6,10 @@ interface TerminalInterface {
 
 export const Terminal = ({ profile }: TerminalInterface) => {
   return (
-    <div className="relative max-w-md rounded-lg border border-indigo-500 bg-gradient-to-r from-indigo-950 to-indigo-950 text-left">
+    <div className="relative max-w-md rounded-lg border border-indigo-500 bg-linear-to-r from-indigo-950 to-indigo-950 text-left">
       <div className="flex flex-row">
-        <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-pink-500 to-violet-600"></div>
-        <div className="h-[1px] w-full bg-gradient-to-r from-violet-600 to-transparent"></div>
+        <div className="h-[1px] w-full bg-linear-to-r from-transparent via-pink-500 to-violet-600"></div>
+        <div className="h-[1px] w-full bg-linear-to-r from-violet-600 to-transparent"></div>
       </div>
       <div className="px-4 py-5 lg:px-6">
         <div className="flex flex-row space-x-2">

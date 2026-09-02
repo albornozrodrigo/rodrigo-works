@@ -1,8 +1,15 @@
 import { Divider } from '../../../components/divider';
+import { Seo } from '../../../components/seo';
 
 export default function FreightLogin() {
   return (
-    <div className="bg-gradient-to-br py-20 dark:from-indigo-950 dark:via-neutral-950 dark:to-indigo-950">
+    <div className="bg-linear-to-br py-20 dark:from-indigo-950 dark:via-neutral-950 dark:to-indigo-950">
+      <Seo
+        title="Sistema de Autenticação Corporativa — case técnico"
+        description="Case técnico: login unificado em NextJS e NestJS com autenticação LDAP, cadastro de usuários e controle de papéis e permissões compartilhado entre as aplicações da equipe."
+        path="/cases/freight-login"
+      />
+
       <div className="container mx-auto max-w-3xl px-6">
         <div className="text-base-content min-h-screen space-y-6">
           <h1 className="mb-8 text-4xl font-bold">

@@ -7,20 +7,17 @@ export const Onboarding = () => {
   return (
     <Card>
       <h3 className="card-title text-warning flex justify-between">
-        <Link
-          rel="noreferrer noopener"
-          to={CODE_SAMPLES.ONBOARDING}
-          className="flex items-center gap-2"
-        >
-          <StepForwardIcon className="size-4" />
+        <Link to={CODE_SAMPLES.ONBOARDING} className="flex items-center gap-2">
+          <StepForwardIcon className="size-4" aria-hidden="true" />
           Onboarding
         </Link>
-
         <span className="badge badge-warning badge-xs">CODE SAMPLE</span>
       </h3>
-      <Link rel="noreferrer noopener" to={CODE_SAMPLES.ONBOARDING}>
-        Componente de Onboarding feito utilizando <strong>VueJS</strong>,{' '}
-        <strong>TypeScript</strong> e <strong>TailwindCSS</strong>.
+      <Link to={CODE_SAMPLES.ONBOARDING}>
+        Fluxo de onboarding escrito em <strong>VueJS</strong>, empacotado como
+        Custom Element e renderizado dentro deste host React. O caso mostra
+        Module Federation cruzando frameworks: dois times poderiam escolher
+        stacks diferentes e ainda assim entregar na mesma página.
       </Link>
       <div className="mt-4 flex flex-wrap gap-2">
         <span className="badge badge-primary">Micro Frontend</span>

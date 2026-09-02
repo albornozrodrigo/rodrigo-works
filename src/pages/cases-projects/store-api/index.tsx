@@ -1,22 +1,31 @@
 import { CheckCircle2Icon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Divider } from '../../../components/divider';
+import { Seo } from '../../../components/seo';
 import { CASES } from '../../../consts';
 
-export default function Store() {
-  const HelpFromTeam = () => {
-    return (
-      <p className="mt-2">
-        <em className="text-xs">
-          Parte deste processo foi desenvolvido em colaboração com outras
-          pessoas da equipe, como desenvolvedores back-end e devops.
-        </em>
-      </p>
-    );
-  };
+/**
+ * Fora do `Store` de propósito: definido dentro do render, o React trataria
+ * cada render como um tipo de componente novo e remontaria a subárvore.
+ */
+const HelpFromTeam = () => (
+  <p className="mt-2">
+    <em className="text-xs">
+      Parte deste processo foi desenvolvido em colaboração com outras pessoas da
+      equipe, como desenvolvedores back-end e devops.
+    </em>
+  </p>
+);
 
+export default function Store() {
   return (
-    <div className="bg-gradient-to-br py-20 dark:from-indigo-950 dark:via-neutral-950 dark:to-indigo-950">
+    <div className="bg-linear-to-br py-20 dark:from-indigo-950 dark:via-neutral-950 dark:to-indigo-950">
+      <Seo
+        title="Sistema de Gestão de Sellers — case técnico"
+        description="Case técnico: painel NextJS e API NestJS que centralizavam a configuração logística dos sellers de um marketplace de grande porte e distribuíam os dados via Kafka."
+        path="/cases/store"
+      />
+
       <div className="container mx-auto max-w-3xl px-6">
         <div className="text-base-content min-h-screen space-y-6">
           <h1 className="mb-8 text-4xl font-bold">

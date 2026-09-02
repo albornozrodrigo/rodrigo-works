@@ -1,133 +1,102 @@
 import { render, screen } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import App from './App';
 
-// Mock dos componentes filhos para focar nos testes do App
-jest.mock('./components/navbar', () => ({
+// Mock dos componentes filhos para focar o teste no roteamento.
+vi.mock('./components/navbar', () => ({
   Navbar: () => <div data-testid="navbar">Navbar</div>,
 }));
 
-jest.mock('./components/footer', () => ({
+vi.mock('./components/footer', () => ({
   Footer: () => <div data-testid="footer">Footer</div>,
 }));
 
-jest.mock('./components/divider', () => ({
+vi.mock('./components/divider', () => ({
   Divider: () => <div data-testid="divider">Divider</div>,
 }));
 
-jest.mock('./pages/home', () => ({
-  __esModule: true,
+vi.mock('./pages/home', () => ({
   default: () => <div data-testid="home">Home Page</div>,
 }));
 
-jest.mock('./pages/cases-projects/store-api', () => ({
-  __esModule: true,
+vi.mock('./pages/cv', () => ({
+  default: () => <div data-testid="cv">CV Page</div>,
+}));
+
+vi.mock('./pages/not-found', () => ({
+  default: () => <div data-testid="not-found">Not Found Page</div>,
+}));
+
+vi.mock('./pages/cases-projects/store-api', () => ({
   default: () => <div data-testid="store">Store Page</div>,
 }));
 
-jest.mock('./pages/cases-projects/app-broker', () => ({
-  __esModule: true,
+vi.mock('./pages/cases-projects/app-broker', () => ({
   default: () => <div data-testid="app-broker">App Broker Page</div>,
 }));
 
-jest.mock('./pages/cases-projects/feight-login', () => ({
-  __esModule: true,
+vi.mock('./pages/cases-projects/feight-login', () => ({
   default: () => <div data-testid="freight-login">Freight Login Page</div>,
 }));
 
-jest.mock('./pages/cases-projects/loveg', () => ({
-  __esModule: true,
+vi.mock('./pages/cases-projects/loveg', () => ({
   default: () => <div data-testid="loveg">Loveg Page</div>,
 }));
 
-jest.mock('./pages/code-samples/swipe-cards', () => ({
-  __esModule: true,
+vi.mock('./pages/cases-projects/graphql-schema-first', () => ({
+  default: () => <div data-testid="graphql-schema-first">Schema First</div>,
+}));
+
+vi.mock('./pages/cases-projects/graphql-code-first', () => ({
+  default: () => <div data-testid="graphql-code-first">Code First</div>,
+}));
+
+vi.mock('./pages/code-samples/swipe-cards', () => ({
   default: () => <div data-testid="swipe-cards">Swipe Cards Page</div>,
 }));
 
-jest.mock('./pages/code-samples/onboarding', () => ({
-  __esModule: true,
+vi.mock('./pages/code-samples/onboarding', () => ({
   default: () => <div data-testid="onboarding">Onboarding Page</div>,
 }));
 
-// Mock do window.scrollTo
-Object.defineProperty(window, 'scrollTo', {
-  value: jest.fn(),
-  writable: true,
-});
-
-const renderWithRouter = (
-  component: React.ReactElement,
-  { route = '/' } = {},
-) => {
-  window.history.pushState({}, 'Test page', route);
-  return render(<BrowserRouter>{component}</BrowserRouter>);
-};
+const renderAt = (route = '/') =>
+  render(
+    <MemoryRouter initialEntries={[route]}>
+      <App />
+    </MemoryRouter>,
+  );
 
 describe('App', () => {
-  it('deve renderizar o componente App com navbar, rotas e footer', () => {
-    renderWithRouter(<App />);
+  it('renderiza navbar, conteúdo e footer', async () => {
+    renderAt('/');
 
     expect(screen.getByTestId('navbar')).toBeInTheDocument();
     expect(screen.getByTestId('footer')).toBeInTheDocument();
     expect(screen.getByTestId('divider')).toBeInTheDocument();
-  });
-
-  it('deve renderizar a página Home na rota raiz', () => {
-    renderWithRouter(<App />, { route: '/' });
-
     expect(screen.getByTestId('home')).toBeInTheDocument();
   });
 
-  it('deve renderizar a página Store na rota /cases/store', () => {
-    renderWithRouter(<App />, { route: '/cases/store' });
+  // Todas as rotas abaixo passam por React.lazy + Suspense, então a asserção
+  // precisa ser assíncrona: o chunk só resolve depois de uma microtask.
+  it.each([
+    ['/cv', 'cv'],
+    ['/cases/store', 'store'],
+    ['/cases/app-broker', 'app-broker'],
+    ['/cases/freight-login', 'freight-login'],
+    ['/projects/loveg-v1-v2', 'loveg'],
+    ['/code-samples/swipe-cards', 'swipe-cards'],
+    ['/code-samples/onboarding', 'onboarding'],
+    ['/code-samples/graphql-api-schema-first', 'graphql-schema-first'],
+    ['/code-samples/graphql-api-code-first', 'graphql-code-first'],
+  ])('renderiza a página de %s', async (route, testId) => {
+    renderAt(route);
 
-    expect(screen.getByTestId('store')).toBeInTheDocument();
+    expect(await screen.findByTestId(testId)).toBeInTheDocument();
   });
 
-  it('deve renderizar a página App Broker na rota /cases/app-broker', () => {
-    renderWithRouter(<App />, { route: '/cases/app-broker' });
+  it('cai na página 404 em rota desconhecida', async () => {
+    renderAt('/rota/que/nao/existe');
 
-    expect(screen.getByTestId('app-broker')).toBeInTheDocument();
-  });
-
-  it('deve renderizar a página Freight Login na rota /cases/freight-login', () => {
-    renderWithRouter(<App />, { route: '/cases/freight-login' });
-
-    expect(screen.getByTestId('freight-login')).toBeInTheDocument();
-  });
-
-  it('deve renderizar a página Loveg na rota /projects/loveg', () => {
-    renderWithRouter(<App />, { route: '/projects/loveg' });
-
-    // Como a rota não está definida, deve renderizar apenas navbar, footer e divider
-    expect(screen.getByTestId('navbar')).toBeInTheDocument();
-    expect(screen.getByTestId('footer')).toBeInTheDocument();
-    expect(screen.getByTestId('divider')).toBeInTheDocument();
-  });
-
-  it('deve renderizar a página Swipe Cards na rota /code-samples/swipe-cards', () => {
-    renderWithRouter(<App />, { route: '/code-samples/swipe-cards' });
-
-    expect(screen.getByTestId('swipe-cards')).toBeInTheDocument();
-  });
-
-  it('deve renderizar a página Onboarding na rota /code-samples/onboarding', () => {
-    renderWithRouter(<App />, { route: '/code-samples/onboarding' });
-
-    expect(screen.getByTestId('onboarding')).toBeInTheDocument();
-  });
-
-  it('deve ter a estrutura correta com navbar, rotas e footer', () => {
-    renderWithRouter(<App />);
-
-    const navbar = screen.getByTestId('navbar');
-    const footer = screen.getByTestId('footer');
-    const divider = screen.getByTestId('divider');
-
-    // Verifica se os elementos estão na ordem correta
-    expect(navbar).toBeInTheDocument();
-    expect(footer).toBeInTheDocument();
-    expect(divider).toBeInTheDocument();
+    expect(await screen.findByTestId('not-found')).toBeInTheDocument();
   });
 });

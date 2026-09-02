@@ -1,8 +1,15 @@
 import { Divider } from '../../../components/divider';
+import { Seo } from '../../../components/seo';
 
 export default function AppBroker() {
   return (
-    <div className="bg-gradient-to-br py-20 dark:from-indigo-950 dark:via-neutral-950 dark:to-indigo-950">
+    <div className="bg-linear-to-br py-20 dark:from-indigo-950 dark:via-neutral-950 dark:to-indigo-950">
+      <Seo
+        title="App Broker — React Native em máquinas de POS"
+        description="Case técnico: app React Native rodando dentro das maquininhas da Cielo para venda de seguros e garantia estendida, com leitura de código de barras/IMEI, captura de assinatura e impressão."
+        path="/cases/app-broker"
+      />
+
       <div className="container mx-auto max-w-3xl px-6">
         <div className="text-base-content min-h-screen space-y-6">
           <h1 className="mb-8 text-4xl font-bold">

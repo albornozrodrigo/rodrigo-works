@@ -1,8 +1,15 @@
 import { Divider } from '../../../components/divider';
+import { Seo } from '../../../components/seo';
 
 export default function Loveg() {
   return (
-    <div className="bg-gradient-to-br py-20 dark:from-indigo-950 dark:via-neutral-950 dark:to-indigo-950">
+    <div className="bg-linear-to-br py-20 dark:from-indigo-950 dark:via-neutral-950 dark:to-indigo-950">
+      <Seo
+        title="Loveg — plataforma de relacionamento vegana"
+        description="Case técnico do Loveg: primeira plataforma brasileira de relacionamento para vegetarianos e veganos, em AngularJS, Laravel, Ionic e chat em tempo real com Socket.io + Redis."
+        path="/projects/loveg-v1-v2"
+      />
+
       <div className="container mx-auto max-w-3xl px-6">
         <div className="text-base-content min-h-screen space-y-6">
           <h1 className="mb-8 text-4xl font-bold">

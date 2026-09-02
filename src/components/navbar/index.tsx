@@ -1,34 +1,47 @@
-import { MoonIcon, SunIcon } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
+import { ROUTES } from '../../consts';
 
 export const Navbar = () => {
+  const { pathname } = useLocation();
+  const isHome = pathname === ROUTES.HOME;
+
   return (
-    <div className="navbar absolute top-0 left-0 z-50 bg-transparent text-white">
+    <header className="navbar absolute top-0 left-0 z-50 bg-transparent text-white">
       <div className="flex-1">
-        <a
-          href="/"
+        <Link
+          to={ROUTES.HOME}
           className="hover:text-secondary ml-2 text-sm transition-all duration-300"
-        >{`<rodrigo.works>`}</a>
+        >{`<rodrigo.works>`}</Link>
       </div>
-      <div className="hidden flex-none">
-        <ul className="menu menu-horizontal px-1">
+
+      <nav className="flex-none" aria-label="Navegação principal">
+        <ul className="menu menu-horizontal gap-1 px-1 text-sm">
+          {isHome && (
+            <>
+              <li className="hidden sm:block">
+                <a href="#about" className="hover:text-secondary">
+                  Sobre
+                </a>
+              </li>
+              <li className="hidden sm:block">
+                <a href="#skills" className="hover:text-secondary">
+                  Stack
+                </a>
+              </li>
+              <li className="hidden sm:block">
+                <a href="#projects" className="hover:text-secondary">
+                  Projetos
+                </a>
+              </li>
+            </>
+          )}
           <li>
-            <label className="swap swap-rotate rounded-full">
-              {/* this hidden checkbox controls the state */}
-              <input
-                type="checkbox"
-                className="theme-controller"
-                value="dark"
-              />
-
-              {/* sun icon */}
-              <SunIcon className="swap-off size-6 fill-current" />
-
-              {/* moon icon */}
-              <MoonIcon className="swap-on size-6 fill-current" />
-            </label>
+            <Link to={ROUTES.CV} className="hover:text-secondary">
+              Currículo
+            </Link>
           </li>
         </ul>
-      </div>
-    </div>
+      </nav>
+    </header>
   );
 };

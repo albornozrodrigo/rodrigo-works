@@ -1,0 +1,18 @@
+/* Regras de impressão: "Imprimir → Salvar como PDF" no navegador gera um
+   currículo limpo, sem navbar/footer/gradientes e sem quebrar seções ao meio. */
+@media print {
+  .cv-no-print,
+  nav[aria-label='Redes sociais'],
+  .navbar,
+  footer {
+    display: none !important;
+  }
+
+  .cv-section {
+    break-inside: avoid;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}

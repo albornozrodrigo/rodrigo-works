@@ -1,12 +1,37 @@
 import { render, screen } from '@testing-library/react';
-import { PropsWithChildren } from 'react';
 import { Animation } from './index';
 
-// Mock do framer-motion
-jest.mock('framer-motion', () => ({
+/**
+ * O framer-motion é mockado para que os props de animação virem atributos
+ * inspecionáveis no DOM. Objetos precisam ser serializados na mão: o React 19
+ * não converte mais objeto em atributo automaticamente — ele simplesmente
+ * ignora o prop, que era o motivo de estes testes falharem.
+ */
+vi.mock('framer-motion', () => ({
   motion: {
-    div: ({ children, ...props }: PropsWithChildren) => (
-      <div data-testid="motion-div" {...props}>
+    div: ({
+      children,
+      initial,
+      whileInView,
+      viewport,
+      transition,
+      ...props
+    }: {
+      children?: React.ReactNode;
+      initial?: unknown;
+      whileInView?: unknown;
+      viewport?: unknown;
+      transition?: unknown;
+      className?: string;
+    }) => (
+      <div
+        data-testid="motion-div"
+        data-initial={JSON.stringify(initial)}
+        data-while-in-view={JSON.stringify(whileInView)}
+        data-viewport={JSON.stringify(viewport)}
+        data-transition={JSON.stringify(transition)}
+        {...props}
+      >
         {children}
       </div>
     ),
@@ -32,9 +57,8 @@ describe('Animation', () => {
       </Animation>,
     );
 
-    const motionDiv = screen.getByTestId('motion-div');
-    expect(motionDiv).toHaveAttribute(
-      'initial',
+    expect(screen.getByTestId('motion-div')).toHaveAttribute(
+      'data-initial',
       '{"opacity":0,"x":100,"y":50}',
     );
   });
@@ -46,9 +70,8 @@ describe('Animation', () => {
       </Animation>,
     );
 
-    const motionDiv = screen.getByTestId('motion-div');
-    expect(motionDiv).toHaveAttribute(
-      'whileInView',
+    expect(screen.getByTestId('motion-div')).toHaveAttribute(
+      'data-while-in-view',
       '{"opacity":1,"y":0,"x":0}',
     );
   });
@@ -60,9 +83,8 @@ describe('Animation', () => {
       </Animation>,
     );
 
-    const motionDiv = screen.getByTestId('motion-div');
-    expect(motionDiv).toHaveAttribute(
-      'viewport',
+    expect(screen.getByTestId('motion-div')).toHaveAttribute(
+      'data-viewport',
       '{"once":true,"amount":0.25}',
     );
   });
@@ -74,9 +96,8 @@ describe('Animation', () => {
       </Animation>,
     );
 
-    const motionDiv = screen.getByTestId('motion-div');
-    expect(motionDiv).toHaveAttribute(
-      'transition',
+    expect(screen.getByTestId('motion-div')).toHaveAttribute(
+      'data-transition',
       '{"duration":0.5,"delay":0.2}',
     );
   });
@@ -88,21 +109,20 @@ describe('Animation', () => {
       </Animation>,
     );
 
-    const motionDiv = screen.getByTestId('motion-div');
-    expect(motionDiv).toHaveClass('test-class');
+    expect(screen.getByTestId('motion-div')).toHaveClass('test-class');
   });
 
-  it('should use defaul values for x and y when not provided', () => {
+  it('should omit x and y when not provided', () => {
     render(
       <Animation once={true}>
         <div>Teste</div>
       </Animation>,
     );
 
-    const motionDiv = screen.getByTestId('motion-div');
-    expect(motionDiv).toHaveAttribute(
-      'initial',
-      '{"opacity":0,"x":undefined,"y":undefined}',
+    // JSON.stringify remove chaves com valor `undefined`.
+    expect(screen.getByTestId('motion-div')).toHaveAttribute(
+      'data-initial',
+      '{"opacity":0}',
     );
   });
 
@@ -113,10 +133,9 @@ describe('Animation', () => {
       </Animation>,
     );
 
-    const motionDiv = screen.getByTestId('motion-div');
-    expect(motionDiv).toHaveAttribute(
-      'transition',
-      '{"duration":0.5,"delay":undefined}',
+    expect(screen.getByTestId('motion-div')).toHaveAttribute(
+      'data-transition',
+      '{"duration":0.5}',
     );
   });
 
@@ -138,9 +157,8 @@ describe('Animation', () => {
       </Animation>,
     );
 
-    const motionDiv = screen.getByTestId('motion-div');
-    expect(motionDiv).toHaveAttribute(
-      'viewport',
+    expect(screen.getByTestId('motion-div')).toHaveAttribute(
+      'data-viewport',
       '{"once":false,"amount":0.25}',
     );
   });

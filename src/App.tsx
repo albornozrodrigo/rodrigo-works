@@ -1,17 +1,30 @@
-import { PropsWithChildren, useLayoutEffect } from 'react';
+import { lazy, PropsWithChildren, Suspense, useLayoutEffect } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { Divider } from './components/divider';
 import { Footer } from './components/footer';
 import { Navbar } from './components/navbar';
-import { CASES, CODE_SAMPLES, PROJECTS } from './consts';
-import AppBroker from './pages/cases-projects/app-broker';
-import FreightLogin from './pages/cases-projects/feight-login';
-import GraphQLApiSchemaFirst from './pages/cases-projects/graphql-schema-first';
-import Loveg from './pages/cases-projects/loveg';
-import Store from './pages/cases-projects/store-api';
-import Onboarding from './pages/code-samples/onboarding';
-import SwipeCards from './pages/code-samples/swipe-cards';
+import { CASES, CODE_SAMPLES, PROJECTS, ROUTES } from './consts';
 import Home from './pages/home';
+
+/**
+ * Só a Home entra no bundle inicial. As páginas de case são documentos longos
+ * que quase ninguém abre na primeira visita — carregá-las sob demanda tira
+ * dezenas de KB do carregamento inicial.
+ */
+const Store = lazy(() => import('./pages/cases-projects/store-api'));
+const AppBroker = lazy(() => import('./pages/cases-projects/app-broker'));
+const FreightLogin = lazy(() => import('./pages/cases-projects/feight-login'));
+const Loveg = lazy(() => import('./pages/cases-projects/loveg'));
+const GraphQLApiSchemaFirst = lazy(
+  () => import('./pages/cases-projects/graphql-schema-first'),
+);
+const GraphQLApiCodeFirst = lazy(
+  () => import('./pages/cases-projects/graphql-code-first'),
+);
+const SwipeCards = lazy(() => import('./pages/code-samples/swipe-cards'));
+const Onboarding = lazy(() => import('./pages/code-samples/onboarding'));
+const Cv = lazy(() => import('./pages/cv'));
+const NotFound = lazy(() => import('./pages/not-found'));
 
 const Wrapper = ({ children }: PropsWithChildren) => {
   const location = useLocation();
@@ -24,24 +37,43 @@ const Wrapper = ({ children }: PropsWithChildren) => {
   return children;
 };
 
+const RouteFallback = () => (
+  <div
+    className="flex min-h-screen items-center justify-center"
+    role="status"
+    aria-live="polite"
+  >
+    <span className="loading loading-dots loading-lg text-primary" />
+    <span className="sr-only">Carregando…</span>
+  </div>
+);
+
 function App() {
   return (
     <>
       <Navbar />
       <Wrapper>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path={CASES.STORE} element={<Store />} />
-          <Route path={CASES.APP_BROKER} element={<AppBroker />} />
-          <Route path={CASES.FREIGHT_LOGIN} element={<FreightLogin />} />
-          <Route path={PROJECTS.LOVEG} element={<Loveg />} />
-          <Route path={CODE_SAMPLES.SWIPE_CARDS} element={<SwipeCards />} />
-          <Route path={CODE_SAMPLES.ONBOARDING} element={<Onboarding />} />
-          <Route
-            path={CODE_SAMPLES.GQL_API_SCHEMA_FIRST}
-            element={<GraphQLApiSchemaFirst />}
-          />
-        </Routes>
+        <Suspense fallback={<RouteFallback />}>
+          <Routes>
+            <Route path={ROUTES.HOME} element={<Home />} />
+            <Route path={ROUTES.CV} element={<Cv />} />
+            <Route path={CASES.STORE} element={<Store />} />
+            <Route path={CASES.APP_BROKER} element={<AppBroker />} />
+            <Route path={CASES.FREIGHT_LOGIN} element={<FreightLogin />} />
+            <Route path={PROJECTS.LOVEG} element={<Loveg />} />
+            <Route path={CODE_SAMPLES.SWIPE_CARDS} element={<SwipeCards />} />
+            <Route path={CODE_SAMPLES.ONBOARDING} element={<Onboarding />} />
+            <Route
+              path={CODE_SAMPLES.GQL_API_SCHEMA_FIRST}
+              element={<GraphQLApiSchemaFirst />}
+            />
+            <Route
+              path={CODE_SAMPLES.GQL_API_CODE_FIRST}
+              element={<GraphQLApiCodeFirst />}
+            />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
       </Wrapper>
       <Divider />
       <Footer />
