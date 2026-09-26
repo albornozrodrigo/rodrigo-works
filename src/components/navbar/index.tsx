@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { ROUTES } from '../../consts';
+import { Logo } from '../logo';
 
 export const Navbar = () => {
   const { pathname } = useLocation();
@@ -10,8 +11,11 @@ export const Navbar = () => {
       <div className="flex-1">
         <Link
           to={ROUTES.HOME}
-          className="hover:text-secondary ml-2 text-sm transition-all duration-300"
-        >{`<rodrigo.works>`}</Link>
+          aria-label="rodrigo.works"
+          className="ml-2 flex items-center transition-opacity duration-300 hover:opacity-80"
+        >
+          <Logo size={18} />
+        </Link>
       </div>
 
       <nav className="flex-none" aria-label="Navegação principal">

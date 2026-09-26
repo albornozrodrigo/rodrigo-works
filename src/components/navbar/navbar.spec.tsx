@@ -13,9 +13,10 @@ describe('Navbar', () => {
   it('leva o logo para a home', () => {
     renderAt('/');
 
-    expect(
-      screen.getByRole('link', { name: '<rodrigo.works>' }),
-    ).toHaveAttribute('href', '/');
+    expect(screen.getByRole('link', { name: 'rodrigo.works' })).toHaveAttribute(
+      'href',
+      '/',
+    );
   });
 
   it('mostra as âncoras das seções quando está na home', () => {
